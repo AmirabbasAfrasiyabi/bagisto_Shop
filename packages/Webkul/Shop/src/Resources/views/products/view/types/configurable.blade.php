@@ -68,7 +68,6 @@
                                     <label
                                         class="relative -m-0.5 flex cursor-pointer items-center justify-center rounded-full p-0.5 focus:outline-none"
                                         :class="{'ring-2 ring-gray-900' : option.id == attribute.selectedValue}"
-                                        :style="{ '--tw-ring-color': option.swatch_value }"
                                         :title="option.label"
                                         v-if="attribute.swatch_type == 'color'"
                                     >
@@ -94,9 +93,9 @@
                                         </v-field>
 
                                         <span
-                                            class="h-8 w-8 rounded-full border border-opacity-10 max-sm:h-[25px] max-sm:w-[25px]"
+                                            class="h-8 w-8 rounded-full border border-gray-200 max-sm:h-[25px] max-sm:w-[25px]"
                                             tabindex="0"
-                                            :style="{ 'background-color': option.swatch_value, 'border-color': option.swatch_value}"
+                                            :style="{ 'background-color': option.swatch_value }"
                                         ></span>
                                     </label>
 
@@ -350,16 +349,32 @@
                     reloadPrice () {
                         let selectedOptionCount = this.childAttributes.filter(attribute => attribute.selectedValue).length;
 
+                        let finalPrice = document.querySelector('.final-price');
+
+                        let regularPrice = document.querySelector('.regular-price');
+
+                        let configVariant = this.config.variant_prices[this.possibleOptionVariant];
+
                         if (this.childAttributes.length == selectedOptionCount) {
                             document.querySelector('.price-label').style.display = 'none';
 
-                            document.querySelector('.final-price').innerHTML = this.config.variant_prices[this.possibleOptionVariant].final.formatted_price;
+                            if (parseInt(configVariant.regular.price) > parseInt(configVariant.final.price)) {
+                                regularPrice.style.display = 'block';
+
+                                finalPrice.innerHTML = configVariant.final.formatted_price;
+
+                                regularPrice.innerHTML = configVariant.regular.formatted_price;
+                            } else {
+                                finalPrice.innerHTML = configVariant.regular.formatted_price;
+
+                                regularPrice.style.display = 'none';
+                            }
 
                             this.$emitter.emit('configurable-variant-selected-event',this.possibleOptionVariant);
                         } else {
                             document.querySelector('.price-label').style.display = 'inline-block';
 
-                            document.querySelector('.final-price').innerHTML = this.config.regular.formatted_price;
+                            finalPrice.innerHTML = this.config.regular.formatted_price;
 
                             this.$emitter.emit('configurable-variant-selected-event', 0);
                         }

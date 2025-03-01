@@ -4,6 +4,7 @@ namespace Webkul\Admin\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Webkul\Core\Rules\PhoneNumber;
+use Webkul\Core\Rules\PostCode;
 use Webkul\Customer\Rules\VatIdRule;
 
 class AddressRequest extends FormRequest
@@ -33,9 +34,9 @@ class AddressRequest extends FormRequest
             'country'         => ['required'],
             'state'           => ['required'],
             'city'            => ['required'],
-            'postcode'        => ['required', 'numeric'],
+            'postcode'        => ['required', new PostCode],
             'phone'           => ['required', new PhoneNumber],
-            'vat_id'          => [new VatIdRule()],
+            'vat_id'          => [new VatIdRule],
             'email'           => ['required'],
             'default_address' => ['sometimes', 'required', 'in:0,1'],
         ];

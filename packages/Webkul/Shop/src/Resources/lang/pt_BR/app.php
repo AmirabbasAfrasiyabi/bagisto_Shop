@@ -387,7 +387,10 @@ return [
         ],
 
         'media' => [
-            'add-attachments' => 'Adicionar Anexos',
+            'index' => [
+                'add-attachments' => 'Adicionar Anexos',
+                'add-image'       => 'Adicionar Imagem/Vídeo',
+            ],
         ],
 
         'layouts' => [
@@ -420,6 +423,7 @@ return [
                 'mobile' => [
                     'currencies' => 'Moedas',
                     'locales'    => 'Localizações',
+                    'login'      => 'Inscrever-se ou Entrar',
                 ],
             ],
 
@@ -973,6 +977,12 @@ return [
                 'greeting'    => 'Bem-vindo à nossa newsletter!',
                 'subject'     => 'Você! Inscreva-se na Nossa Newsletter',
                 'unsubscribe' => 'Cancelar Inscrição',
+            ],
+
+            'reminder' => [
+                'already-paid'    => 'Se você já efetuou o pagamento, por favor ignore esta mensagem.',
+                'invoice-overdue' => 'Este é um lembrete amigável de que sua fatura está vencida. Solicitamos gentilmente que efetue o pagamento o mais rápido possível.',
+                'subject'         => 'Lembrete de fatura',
             ],
         ],
 

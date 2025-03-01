@@ -387,7 +387,10 @@ return [
         ],
 
         'media' => [
-            'add-attachments' => 'Agregar adjuntos',
+            'index' => [
+                'add-attachments' => 'Agregar adjuntos',
+                'add-image'       => 'Agregar Imagen/Video',
+            ],
         ],
 
         'layouts' => [
@@ -420,6 +423,7 @@ return [
                 'mobile' => [
                     'currencies' => 'Monedas',
                     'locales'    => 'Idiomas',
+                    'login'      => 'Registrarse o Iniciar sesión',
                 ],
             ],
 
@@ -973,6 +977,12 @@ return [
                 'greeting'    => '¡Bienvenido a nuestro boletín!',
                 'subject'     => '¡Usted! Suscríbase a nuestro boletín',
                 'unsubscribe' => 'Darse de baja',
+            ],
+
+            'reminder' => [
+                'already-paid'    => 'Si ya ha realizado el pago, ignore este mensaje.',
+                'invoice-overdue' => 'Este es un recordatorio amable de que su factura está vencida. Le pedimos amablemente que realice el pago lo antes posible.',
+                'subject'         => 'Recordatorio de factura',
             ],
         ],
 

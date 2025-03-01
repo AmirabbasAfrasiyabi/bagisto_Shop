@@ -48,6 +48,20 @@ class ThemeCustomizationRepository extends Repository
     }
 
     /**
+     * Mass update the status of themes in the repository.
+     *
+     * This method updates multiple records in the database based on the provided
+     * theme IDs.
+     *
+     * @param  int  $themeIds
+     * @return int The number of records updated.
+     */
+    public function massUpdateStatus(array $data, array $themeIds)
+    {
+        return $this->model->whereIn('id', $themeIds)->update($data);
+    }
+
+    /**
      * Upload images
      *
      * @return void|string
@@ -77,7 +91,7 @@ class ThemeCustomizationRepository extends Repository
                 ];
             } elseif ($image['image'] instanceof UploadedFile) {
                 try {
-                    $manager = new ImageManager();
+                    $manager = new ImageManager;
 
                     $path = 'theme/'.$theme->id.'/'.Str::random(40).'.webp';
 

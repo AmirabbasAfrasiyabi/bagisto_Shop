@@ -120,64 +120,65 @@
                             </div>
                         </div>
 
-                        <!-- For Attribute Options If Data Exist -->
-                        <div class="mt-4 overflow-x-auto">
-                            <div class="flex items-center gap-4 max-sm:flex-wrap">
-                                <!-- Input Options -->
-                                <x-admin::form.control-group
-                                    class="mb-2.5 w-full"
-                                    v-if="this.showSwatch"
+                        <!-- Swatch Changer and Empty Field Section. -->
+                        <div class="flex items-center gap-4 max-sm:flex-wrap">
+                            <!-- Input Options -->
+                            <x-admin::form.control-group
+                                class="mb-2.5 w-full"
+                                v-if="this.showSwatch"
+                            >
+                                <x-admin::form.control-group.label for="swatchType">
+                                    @lang('admin::app.catalog.attributes.edit.input-options')
+                                </x-admin::form.control-group.label>
+
+                                <x-admin::form.control-group.control
+                                    type="select"
+                                    id="swatchType"
+                                    name="swatch_type"
+                                    v-model="swatchType"
+                                    @change="showSwatch=true"
                                 >
-                                    <x-admin::form.control-group.label for="swatchType">
-                                        @lang('admin::app.catalog.attributes.edit.input-options')
-                                    </x-admin::form.control-group.label>
+                                    @foreach (['dropdown', 'color', 'image', 'text'] as $type)
+                                        <option value="{{ $type }}">
+                                            @lang('admin::app.catalog.attributes.edit.option.' . $type)
+                                        </option>
+                                    @endforeach
+                                </x-admin::form.control-group.control>
 
-                                    <x-admin::form.control-group.control
-                                        type="select"
-                                        id="swatchType"
-                                        name="swatch_type"
-                                        v-model="swatchType"
-                                        @change="showSwatch=true"
+                                <x-admin::form.control-group.error control-name="admin" />
+                            </x-admin::form.control-group>
+
+                            <!-- checkbox -->
+                            <div class="w-full">
+                                <div class="!mb-0 flex w-max cursor-pointer select-none items-center gap-2.5">
+                                    <input
+                                        type="checkbox"
+                                        name="empty_option"
+                                        id="empty_option"
+                                        for="empty_option"
+                                        class="peer hidden"
+                                        v-model="isNullOptionChecked"
+                                        @click="$refs.addOptionsRow.toggle()"
                                     >
-                                        @foreach (['dropdown', 'color', 'image', 'text'] as $type)
-                                            <option value="{{ $type }}">
-                                                @lang('admin::app.catalog.attributes.edit.option.' . $type)
-                                            </option>
-                                        @endforeach
-                                    </x-admin::form.control-group.control>
 
-                                    <x-admin::form.control-group.error control-name="admin" />
-                                </x-admin::form.control-group>
+                                    <label
+                                        for="empty_option"
+                                        class="icon-uncheckbox peer-checked:icon-checked cursor-pointer rounded-md text-2xl peer-checked:text-blue-600"
+                                    >
+                                    </label>
 
-                                <!-- checkbox -->
-                                <div class="w-full">
-                                    <div class="!mb-0 flex w-max cursor-pointer select-none items-center gap-2.5">
-                                        <input
-                                            type="checkbox"
-                                            name="empty_option"
-                                            id="empty_option"
-                                            for="empty_option"
-                                            class="peer hidden"
-                                            v-model="isNullOptionChecked"
-                                            @click="$refs.addOptionsRow.toggle()"
-                                        >
-
-                                        <label
-                                            for="empty_option"
-                                            class="icon-uncheckbox peer-checked:icon-checked cursor-pointer rounded-md text-2xl peer-checked:text-blue-600"
-                                        >
-                                        </label>
-
-                                        <label
-                                            for="empty_option"
-                                            class="cursor-pointer text-xs font-medium text-gray-600 dark:text-gray-300"
-                                        >
-                                            @lang('admin::app.catalog.attributes.edit.create-empty-option')
-                                        </label>
-                                    </div>
+                                    <label
+                                        for="empty_option"
+                                        class="cursor-pointer text-xs font-medium text-gray-600 dark:text-gray-300"
+                                    >
+                                        @lang('admin::app.catalog.attributes.edit.create-empty-option')
+                                    </label>
                                 </div>
                             </div>
+                        </div>
 
+                        <!-- For Attribute Options If Data Exist -->
+                        <div class="mt-4 overflow-x-auto">
                             <template v-if="optionsData?.length">
                                 @if (
                                     $attribute->type == 'select'
@@ -201,12 +202,10 @@
                                                     @lang('admin::app.catalog.attributes.edit.admin-name')
                                                 </x-admin::table.th>
 
-                                                <!-- Loacles tables heading -->
-                                                @foreach ($locales as $locale)
-                                                    <x-admin::table.th>
-                                                        {{ $locale->name . ' (' . $locale->code . ')' }}
-                                                    </x-admin::table.th>
-                                                @endforeach
+                                                <!-- Locales tables heading -->
+                                                <x-admin::table.th v-for="locale in locales">
+                                                    @{{ locale.name + '(' + [locale.code] + ')' }}
+                                                </x-admin::table.th>
 
                                                 <!-- Action tables heading -->
                                                 <x-admin::table.th></x-admin::table.th>
@@ -227,17 +226,19 @@
                                                     class="hover:bg-gray-50 dark:hover:bg-gray-950"
                                                     v-show="! element.isDelete"
                                                 >
-                                                    <input
-                                                        type="hidden"
-                                                        :name="'options[' + element.id + '][isNew]'"
-                                                        :value="element.isNew"
-                                                    >
-
-                                                    <input
-                                                        type="hidden"
-                                                        :name="'options[' + element.id + '][isDelete]'"
-                                                        :value="element.isDelete"
-                                                    >
+                                                    <th>
+                                                        <input
+                                                            type="hidden"
+                                                            :name="'options[' + element.id + '][isNew]'"
+                                                            :value="element.isNew"
+                                                        >
+        
+                                                        <input
+                                                            type="hidden"
+                                                            :name="'options[' + element.id + '][isDelete]'"
+                                                            :value="element.isDelete"
+                                                        >
+                                                    </th>
 
                                                     <!-- Draggable Icon -->
                                                     <x-admin::table.td class="!px-0 text-center">
@@ -297,7 +298,7 @@
                                                         />
                                                     </x-admin::table.td>
 
-                                                    <!-- Loacles -->
+                                                    <!-- Locales -->
                                                     <x-admin::table.td v-for="locale in locales">
                                                         <p class="dark:text-white">
                                                             @{{ element['locales'][locale.code] }}
@@ -367,7 +368,7 @@
 
                 <!-- Right sub-component -->
                 <div class="flex w-[360px] max-w-full flex-col gap-2 max-sm:w-full">
-                    {!! view_render_event('bagisto.admin.catalog.attributes.edit.card.accordian.general.before', ['attribute' => $attribute]) !!}
+                    {!! view_render_event('bagisto.admin.catalog.attributes.edit.card.accordion.general.before', ['attribute' => $attribute]) !!}
 
                     <!-- General -->
                     <x-admin::accordion>
@@ -384,18 +385,13 @@
                                     @lang('admin::app.catalog.attributes.edit.code')
                                 </x-admin::form.control-group.label>
 
-                                @php
-                                    $selectedOption = old('type') ?: $attribute->code;
-                                @endphp
-
                                 <x-admin::form.control-group.control
                                     type="text"
                                     class="cursor-not-allowed"
                                     name="code"
                                     rules="required"
-                                    :value="$selectedOption"
-                                    :disabled="(boolean) $selectedOption"
-                                    readonly
+                                    :value="old('code') ?? $attribute->code"
+                                    disabled="true"
                                     :label="trans('admin::app.catalog.attributes.edit.code')"
                                     :placeholder="trans('admin::app.catalog.attributes.edit.code')"
                                 />
@@ -403,7 +399,7 @@
                                 <x-admin::form.control-group.control
                                     type="hidden"
                                     name="code"
-                                    :value="$selectedOption"
+                                    :value="$attribute->code"
                                 />
 
                                 <x-admin::form.control-group.error control-name="code" />
@@ -492,9 +488,9 @@
                         </x-slot>
                     </x-admin::accordion>
                     
-                    {!! view_render_event('bagisto.admin.catalog.attributes.edit.card.accordian.general.after', ['attribute' => $attribute]) !!}
+                    {!! view_render_event('bagisto.admin.catalog.attributes.edit.card.accordion.general.after', ['attribute' => $attribute]) !!}
 
-                    {!! view_render_event('bagisto.admin.catalog.attributes.edit.card.accordian.validations.before', ['attribute' => $attribute]) !!}
+                    {!! view_render_event('bagisto.admin.catalog.attributes.edit.card.accordion.validations.before', ['attribute' => $attribute]) !!}
 
                     <!-- Validations -->
                     <x-admin::accordion>
@@ -620,9 +616,9 @@
                         </x-slot>
                     </x-admin::accordion>
 
-                    {!! view_render_event('bagisto.admin.catalog.attributes.edit.card.accordian.validations.after', ['attribute' => $attribute]) !!}
+                    {!! view_render_event('bagisto.admin.catalog.attributes.edit.card.accordion.validations.after', ['attribute' => $attribute]) !!}
 
-                    {!! view_render_event('bagisto.admin.catalog.attributes.edit.card.accordian.configuration.before', ['attribute' => $attribute]) !!}
+                    {!! view_render_event('bagisto.admin.catalog.attributes.edit.card.accordion.configuration.before', ['attribute' => $attribute]) !!}
 
                     <!-- Configurations -->
                     <x-admin::accordion>
@@ -664,7 +660,7 @@
                             <!-- Value Per Channel -->
                             <x-admin::form.control-group class="!mb-2 flex select-none items-center gap-2.5 opacity-70">
                                 @php
-                                    $valuePerChannel = old('value_per_channel') ?? $attribute->value_per_channel
+                                    $valuePerChannel = old('value_per_channel') ?? $attribute->value_per_channel;
                                 @endphp
 
                                 <x-admin::form.control-group.control
@@ -688,7 +684,10 @@
                             </x-admin::form.control-group>
 
                             <!-- Use in Layered -->
-                            <x-admin::form.control-group class="!mb-2 flex select-none items-center gap-2.5">
+                            <x-admin::form.control-group
+                                class="!mb-2 flex select-none items-center gap-2.5"
+                                ::class="{ 'opacity-70' : isFilterableDisabled }"
+                            >
                                 @php
                                     $isFilterable = old('is_filterable') ?? $attribute->is_filterable;
                                 @endphp
@@ -700,6 +699,7 @@
                                     value="1"
                                     for="is_filterable"
                                     :checked="(boolean) $isFilterable"
+                                    ::disabled="isFilterableDisabled"
                                 />
 
                                 <label
@@ -716,7 +716,7 @@
                                 />
                             </x-admin::form.control-group>
 
-                            <!-- Use to create configuable product -->
+                            <!-- Use to create configurable product -->
                             <x-admin::form.control-group class="!mb-2 flex select-none items-center gap-2.5">
                                 @php
                                     $isConfigurable = old('is_configurable') ?? $attribute->is_configurable;
@@ -745,7 +745,7 @@
                                 />
                             </x-admin::form.control-group>
 
-                            <!-- Visible On Product View Page On Fornt End -->
+                            <!-- Visible On Product View Page On Front End -->
                             <x-admin::form.control-group class="!mb-2 flex select-none items-center gap-2.5">
                                 @php
                                     $isVisibleOnFront = old('is_visible_on_front') ?? $attribute->is_visible_on_front;
@@ -805,7 +805,7 @@
                         </x-slot>
                     </x-admin::accordion>
 
-                    {!! view_render_event('bagisto.admin.catalog.attributes.edit.card.accordian.configuration.configuration.after', ['attribute' => $attribute]) !!}
+                    {!! view_render_event('bagisto.admin.catalog.attributes.edit.card.accordion.configuration.configuration.after', ['attribute' => $attribute]) !!}
                 </div>
             </div>
 
@@ -885,6 +885,7 @@
                                     name="id"
                                 />
 
+                                <!-- Hidden IsNew Input -->
                                 <x-admin::form.control-group.control
                                     type="hidden"
                                     name="isNew"
@@ -953,6 +954,8 @@
                     return {
                         showSwatch: {{ in_array($attribute->type, ['select', 'checkbox', 'price', 'multiselect']) ? 'true' : 'false' }},
 
+                        attributeType: "{{ $attribute->type }}",
+
                         swatchType: "{{ $attribute->swatch_type == '' ? 'dropdown' : $attribute->swatch_type }}",
 
                         isNullOptionChecked: false,
@@ -973,20 +976,33 @@
                     }
                 },
 
+                computed: {
+                    isFilterableDisabled() {
+                        return this.attributeType == 'price' || this.attributeType == 'checkbox'
+                            || this.attributeType == 'select' || this.attributeType == 'multiselect'
+                            ? false : true;
+                    },
+                },
+
                 created () {
                     this.getAttributesOption();
                 },
 
                 methods: {
                     storeOptions(params, { resetForm, setValues }) {
+                        const lastId = this.optionsData.map(item => item.id).pop() ?? 0;
+
                         if (! params.id) {
-                            params.id = 'option_' + this.optionId;
+                            params.id = `options_${lastId + 1}`;
+
                             this.optionId++;
                         }
 
                         let foundIndex = this.optionsData.findIndex(item => item.id === params.id);
 
                         if (foundIndex !== -1) {
+                            params.isNew = String(params.id).startsWith('options_');
+
                             this.optionsData.splice(foundIndex, 1, params);
                         } else {
                             this.optionsData.push(params);
@@ -996,15 +1012,15 @@
 
                         const sliderImage = formData.get("swatch_value[]");
 
-                        if (sliderImage) {
+                        if (sliderImage?.name) {
                             params.swatch_value = sliderImage;
+
+                            if (sliderImage instanceof File) {
+                                this.setFile(sliderImage, params.id);
+                            }
                         }
 
                         this.$refs.addOptionsRow.toggle();
-
-                        if (params.swatch_value instanceof File) {
-                            this.setFile(sliderImage, params.id);
-                        }
 
                         resetForm();
                     },
@@ -1018,7 +1034,16 @@
                             : [],
                         };
 
-                        this.$refs.modelForm.setValues(value);
+                        this.$refs.modelForm.setValues({
+                            id: value.id,
+                            admin_name: value.admin_name,
+                            swatch_value: value.swatch_value,
+                            swatch_value_url: value.swatch_value_url,
+                            isNew: false,
+                            locales: {
+                                ...value.locales,
+                            }
+                        });
 
                         this.$refs.addOptionsRow.toggle();
                     },

@@ -66,15 +66,17 @@ return [
         'sort'   => 1,
         'fields' => [
             [
-                'name'    => 'title',
-                'title'   => 'admin::app.configuration.index.general.content.header-offer.offer-title',
-                'type'    => 'text',
-                'default' => 'Get UPTO 40% OFF on your 1st order',
+                'name'       => 'title',
+                'title'      => 'admin::app.configuration.index.general.content.header-offer.offer-title',
+                'type'       => 'text',
+                'default'    => 'Get UPTO 40% OFF on your 1st order',
+                'validation' => 'max:100',
             ], [
-                'name'    => 'redirection_title',
-                'title'   => 'admin::app.configuration.index.general.content.header-offer.redirection-title',
-                'type'    => 'text',
-                'default' => 'SHOP NOW',
+                'name'       => 'redirection_title',
+                'title'      => 'admin::app.configuration.index.general.content.header-offer.redirection-title',
+                'type'       => 'text',
+                'default'    => 'SHOP NOW',
+                'validation' => 'max:25',
             ], [
                 'name'    => 'redirection_link',
                 'title'   => 'admin::app.configuration.index.general.content.header-offer.redirection-link',
@@ -824,7 +826,7 @@ return [
                 'name'          => 'street_lines',
                 'title'         => 'admin::app.configuration.index.customer.address.information.street-lines',
                 'type'          => 'text',
-                'validation'    => 'between:1,4',
+                'validation'    => 'between:1,4|integer',
                 'channel_based' => true,
                 'default_value' => 1,
             ],
@@ -1102,7 +1104,7 @@ return [
                 'title' => 'admin::app.configuration.index.email.notifications.customer-registration-confirmation-mail-to-admin',
                 'type'  => 'boolean',
             ], [
-                'name'  => 'emails.general.notifications.customer',
+                'name'  => 'emails.general.notifications.customer_account_credentials',
                 'title' => 'admin::app.configuration.index.email.notifications.customer',
                 'type'  => 'boolean',
             ], [
@@ -1110,20 +1112,32 @@ return [
                 'title' => 'admin::app.configuration.index.email.notifications.new-order',
                 'type'  => 'boolean',
             ], [
-                'name'  => 'emails.general.notifications.new_admin',
-                'title' => 'admin::app.configuration.index.email.notifications.new-admin',
+                'name'  => 'emails.general.notifications.new_order_mail_to_admin',
+                'title' => 'admin::app.configuration.index.email.notifications.new-order-mail-to-admin',
                 'type'  => 'boolean',
             ], [
                 'name'  => 'emails.general.notifications.new_invoice',
                 'title' => 'admin::app.configuration.index.email.notifications.new-invoice',
                 'type'  => 'boolean',
             ], [
+                'name'  => 'emails.general.notifications.new_invoice_mail_to_admin',
+                'title' => 'admin::app.configuration.index.email.notifications.new-invoice-mail-to-admin',
+                'type'  => 'boolean',
+            ], [
                 'name'  => 'emails.general.notifications.new_refund',
                 'title' => 'admin::app.configuration.index.email.notifications.new-refund',
                 'type'  => 'boolean',
             ], [
+                'name'  => 'emails.general.notifications.new_refund_mail_to_admin',
+                'title' => 'admin::app.configuration.index.email.notifications.new-refund-mail-to-admin',
+                'type'  => 'boolean',
+            ], [
                 'name'  => 'emails.general.notifications.new_shipment',
                 'title' => 'admin::app.configuration.index.email.notifications.new-shipment',
+                'type'  => 'boolean',
+            ], [
+                'name'  => 'emails.general.notifications.new_shipment_mail_to_admin',
+                'title' => 'admin::app.configuration.index.email.notifications.new-shipment-mail-to-admin',
                 'type'  => 'boolean',
             ], [
                 'name'  => 'emails.general.notifications.new_inventory_source',
@@ -1132,6 +1146,10 @@ return [
             ], [
                 'name'  => 'emails.general.notifications.cancel_order',
                 'title' => 'admin::app.configuration.index.email.notifications.cancel-order',
+                'type'  => 'boolean',
+            ],  [
+                'name'  => 'emails.general.notifications.cancel_order_mail_to_admin',
+                'title' => 'admin::app.configuration.index.email.notifications.cancel-order-mail-to-admin',
                 'type'  => 'boolean',
             ],
         ],
@@ -1189,7 +1207,7 @@ return [
                 'name'          => 'zipcode',
                 'title'         => 'admin::app.configuration.index.sales.shipping-setting.origin.zip',
                 'type'          => 'text',
-                'validation'    => 'required',
+                'validation'    => 'required|postcode',
                 'channel_based' => true,
                 'locale_based'  => true,
             ], [
@@ -1207,6 +1225,7 @@ return [
                 'name'          => 'contact',
                 'title'         => 'admin::app.configuration.index.sales.shipping-setting.origin.contact-number',
                 'type'          => 'text',
+                'validation'    => 'phone',
                 'channel_based' => true,
             ], [
                 'name'          => 'bank_details',
@@ -1275,7 +1294,7 @@ return [
                 'title'         => 'admin::app.configuration.index.sales.shipping-methods.flat-rate-shipping.rate',
                 'type'          => 'text',
                 'depends'       => 'active:1',
-                'validation'    => 'required_if:active,1',
+                'validation'    => 'required_if:active,1|numeric',
                 'channel_based' => true,
                 'locale_based'  => false,
             ], [
@@ -1351,6 +1370,7 @@ return [
             ], [
                 'name'          => 'invoice_status',
                 'title'         => 'admin::app.configuration.index.sales.payment-methods.set-invoice-status',
+                'depends'       => 'generate_invoice:1',
                 'validation'    => 'required_if:generate_invoice,1',
                 'type'          => 'select',
                 'options'       => [
@@ -1447,10 +1467,12 @@ return [
                 'channel_based' => true,
                 'locale_based'  => false,
             ], [
-                'name'    => 'invoice_status',
-                'title'   => 'admin::app.configuration.index.sales.payment-methods.set-invoice-status',
-                'type'    => 'select',
-                'options' => [
+                'name'       => 'invoice_status',
+                'depends'    => 'generate_invoice:1',
+                'validation' => 'required_if:generate_invoice,1',
+                'title'      => 'admin::app.configuration.index.sales.payment-methods.set-invoice-status',
+                'type'       => 'select',
+                'options'    => [
                     [
                         'title' => 'admin::app.configuration.index.sales.payment-methods.pending',
                         'value' => 'pending',
@@ -1587,7 +1609,7 @@ return [
         'key'    => 'sales.payment_methods.paypal_smart_button',
         'name'   => 'admin::app.configuration.index.sales.payment-methods.paypal-smart-button',
         'info'   => 'admin::app.configuration.index.sales.payment-methods.paypal-smart-button-info',
-        'sort'   => 0,
+        'sort'   => 4,
         'fields' => [
             [
                 'name'          => 'title',
@@ -1693,7 +1715,7 @@ return [
                 'name'          => 'order_number_length',
                 'title'         => 'admin::app.configuration.index.sales.order-settings.order-number.length',
                 'type'          => 'text',
-                'validation'    => 'numeric',
+                'validation'    => 'between:1,10|integer',
                 'channel_based' => true,
             ], [
                 'name'          => 'order_number_suffix',
@@ -1787,7 +1809,7 @@ return [
                 'name'          => 'invoice_number_length',
                 'title'         => 'admin::app.configuration.index.sales.invoice-settings.invoice-number.length',
                 'type'          => 'text',
-                'validation'    => 'numeric',
+                'validation'    => 'numeric|min:0|max:10',
                 'channel_based' => true,
                 'locale_based'  => true,
             ], [
@@ -1841,6 +1863,7 @@ return [
             ], [
                 'name'          => 'logo',
                 'title'         => 'admin::app.configuration.index.sales.invoice-settings.pdf-print-outs.logo',
+                'info'          => 'admin::app.configuration.index.sales.invoice-settings.pdf-print-outs.logo-info',
                 'type'          => 'image',
                 'validation'    => 'mimes:bmp,jpeg,jpg,png,webp',
                 'channel_based' => true,
@@ -2189,10 +2212,11 @@ return [
                 'type'    => 'boolean',
                 'default' => 1,
             ], [
-                'name'    => 'offer_info',
-                'title'   => 'admin::app.configuration.index.sales.checkout.mini-cart.mini-cart-offer-info',
-                'type'    => 'text',
-                'default' => 'Get Up To 30% OFF on your 1st order',
+                'name'       => 'offer_info',
+                'title'      => 'admin::app.configuration.index.sales.checkout.mini-cart.mini-cart-offer-info',
+                'type'       => 'text',
+                'default'    => 'Get Up To 30% OFF on your 1st order',
+                'validation' => 'max:200',
             ],
         ],
     ],

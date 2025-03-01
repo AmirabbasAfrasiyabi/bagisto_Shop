@@ -3,38 +3,41 @@
 return [
     'users' => [
         'sessions' => [
-            'email'                => 'E-posta Adresi',
-            'forget-password-link' => 'Şifremi Unuttum ?',
-            'password'             => 'Şifre',
-            'submit-btn'           => 'Giriş Yap',
-            'title'                => 'Giriş Yap',
+            'email'                  => 'E-posta Adresi',
+            'forget-password-link'   => 'Şifremi Unuttum ?',
+            'password'               => 'Şifre',
+            'powered-by-description' => ':webkul tarafından geliştirilen açık kaynaklı bir proje olan :bagisto tarafından desteklenmektedir.',
+            'submit-btn'             => 'Giriş Yap',
+            'title'                  => 'Giriş Yap',
         ],
 
         'forget-password' => [
             'create' => [
-                'email'           => 'Kayıtlı E-posta',
-                'email-not-exist' => 'E-posta Bulunamadı',
-                'page-title'      => 'Şifremi Unuttum',
-                'reset-link-sent' => 'Şifre Sıfırlama Bağlantısı Gönderildi',
-                'sign-in-link'    => 'Giriş Yap’a Geri Dön ?',
-                'submit-btn'      => 'Sıfırla',
-                'title'           => 'Şifre Kurtarma',
+                'email'                  => 'Kayıtlı E-posta',
+                'email-not-exist'        => 'E-posta Bulunamadı',
+                'page-title'             => 'Şifremi Unuttum',
+                'powered-by-description' => ':webkul tarafından geliştirilen açık kaynaklı bir proje olan :bagisto tarafından desteklenmektedir.',
+                'reset-link-sent'        => 'Şifre Sıfırlama Bağlantısı Gönderildi',
+                'sign-in-link'           => 'Giriş Yap’a Geri Dön ?',
+                'submit-btn'             => 'Sıfırla',
+                'title'                  => 'Şifre Kurtarma',
             ],
         ],
 
         'reset-password' => [
-            'back-link-title'  => 'Giriş Yap’a Geri Dön ?',
-            'confirm-password' => 'Şifreyi Onayla',
-            'email'            => 'Kayıtlı E-posta',
-            'password'         => 'Şifre',
-            'submit-btn'       => 'Şifre Sıfırla',
-            'title'            => 'Şifre Sıfırlama',
+            'back-link-title'        => 'Giriş Yap’a Geri Dön ?',
+            'confirm-password'       => 'Şifreyi Onayla',
+            'email'                  => 'Kayıtlı E-posta',
+            'password'               => 'Şifre',
+            'powered-by-description' => ':webkul tarafından geliştirilen açık kaynaklı bir proje olan :bagisto tarafından desteklenmektedir.',
+            'submit-btn'             => 'Şifre Sıfırla',
+            'title'                  => 'Şifre Sıfırlama',
         ],
     ],
 
     'notifications' => [
         'description-text' => 'Tüm Bildirimleri Listele',
-        'marked-success'   => 'Bildirim Başarıyla İşaretlendi',
+        'marked-success'   => 'Tüm bildirimler okundu olarak işaretlendi',
         'no-record'        => 'Kayıt Bulunamadı',
         'of'               => 'of',
         'per-page'         => 'Sayfa Başına',
@@ -43,6 +46,7 @@ return [
         'view-all'         => 'Tümünü Görüntüle',
 
         'order-status-messages' => [
+            'all'             => 'Tümü',
             'canceled'        => 'Sipariş İptal Edildi',
             'closed'          => 'Sipariş Kapatıldı',
             'completed'       => 'Sipariş Tamamlandı',
@@ -715,7 +719,6 @@ return [
                     'payment-method'   => 'Ödeme Yöntemi',
                     'status'           => 'Durum',
                     'title'            => 'İşlem Detayları',
-                    'transaction-data' => 'İşlem Verileri',
                     'transaction-id'   => 'İşlem ID',
                 ],
             ],
@@ -1060,6 +1063,7 @@ return [
                     'date-time'           => 'Tarih Zaman',
                     'delete'              => 'Sil',
                     'edit'                => 'Düzenle',
+                    'false'               => 'Yanlış',
                     'file'                => 'Dosya',
                     'id'                  => 'Kimlik',
                     'image'               => 'Resim',
@@ -1072,6 +1076,7 @@ return [
                     'select'              => 'Seçiniz',
                     'text'                => 'Metin',
                     'textarea'            => 'Metin Alanı',
+                    'true'                => 'Doğru',
                     'type'                => 'Tür',
                     'unique'              => 'Benzersiz',
                 ],
@@ -1408,6 +1413,7 @@ return [
                     'gender'         => 'Cinsiyet',
                     'group'          => 'Grup',
                     'id'             => 'Müşteri ID',
+                    'id-value'       => 'Kimlik - :id',
                     'inactive'       => 'Pasif',
                     'method-error'   => 'Hata! Yanlış yöntem algılandı, lütfen kitlesel eylem yapılandırmasını kontrol edin',
                     'name'           => 'Müşteri Adı',
@@ -2515,18 +2521,20 @@ return [
                 ],
 
                 'create' => [
-                    'code'              => 'Kodu',
-                    'create-btn'        => 'Para Birimi Oluştur',
-                    'currency-position' => 'Para Birimi Pozisyonu',
-                    'decimal'           => 'Ondalık',
-                    'decimal-separator' => 'Ondalık Ayırıcı',
-                    'delete-warning'    => 'Emin misiniz, bu işlemi gerçekleştirmek istediğinize?',
-                    'general'           => 'Genel',
-                    'group-separator'   => 'Grup Ayırıcı',
-                    'name'              => 'Adı',
-                    'save-btn'          => 'Para Birimini Kaydet',
-                    'symbol'            => 'Sembol',
-                    'title'             => 'Yeni Para Birimi Oluştur',
+                    'code'                   => 'Kodu',
+                    'create-btn'             => 'Para Birimi Oluştur',
+                    'currency-position'      => 'Para Birimi Pozisyonu',
+                    'decimal'                => 'Ondalık',
+                    'decimal-separator'      => 'Ondalık Ayırıcı',
+                    'decimal-separator-note' => ':attribute alanı yalnızca virgül (,) ve nokta (.) operatörlerini kabul edebilir',
+                    'delete-warning'         => 'Emin misiniz, bu işlemi gerçekleştirmek istediğinize?',
+                    'general'                => 'Genel',
+                    'group-separator'        => 'Grup Ayırıcı',
+                    'group-separator-note'   => ':attribute alanı yalnızca virgül (,), nokta (.), kesme işareti (\') ve boşluk ( ) karakterlerini kabul edebilir.',
+                    'name'                   => 'Adı',
+                    'save-btn'               => 'Para Birimini Kaydet',
+                    'symbol'                 => 'Sembol',
+                    'title'                  => 'Yeni Para Birimi Oluştur',
                 ],
 
                 'edit' => [
@@ -2572,6 +2580,7 @@ return [
                     'allowed-errors'      => 'İzin Verilen Hatalar',
                     'back-btn'            => 'Geri',
                     'create-update'       => 'Oluştur/Güncelle',
+                    'current-file'        => 'Mevcut Yüklenen Dosya',
                     'delete'              => 'Sil',
                     'download-sample'     => 'Örnek İndir',
                     'field-separator'     => 'Alan Ayracı',
@@ -2799,6 +2808,7 @@ return [
                         'title'   => 'Vergi Kategorilerini Düzenle',
                     ],
 
+                    'can-not-delete' => 'Vergi Oranı Atanmış Kategoriler silinemez.',
                     'create-success' => 'Yeni Vergi Kategorisi Oluşturuldu',
                     'delete-failed'  => 'Vergi Kategorisi Silme Başarısız',
                     'delete-success' => 'Vergi Kategorisi Başarıyla Silindi',
@@ -3077,17 +3087,18 @@ return [
                 'title'      => 'Temalar',
 
                 'datagrid' => [
-                    'active'       => 'Aktif',
-                    'channel_name' => 'Kanal Adı',
-                    'delete'       => 'Sil',
-                    'id'           => 'Kimlik',
-                    'inactive'     => 'Pasif',
-                    'name'         => 'Ad',
-                    'sort-order'   => 'Sıralama Sırası',
-                    'status'       => 'Durum',
-                    'theme'        => 'Tema',
-                    'type'         => 'Tür',
-                    'view'         => 'Görünüm',
+                    'active'        => 'Aktif',
+                    'channel_name'  => 'Kanal Adı',
+                    'change-status' => 'Durumu değiştir',
+                    'delete'        => 'Sil',
+                    'id'            => 'Kimlik',
+                    'inactive'      => 'Pasif',
+                    'name'          => 'Ad',
+                    'sort-order'    => 'Sıralama Sırası',
+                    'status'        => 'Durum',
+                    'theme'         => 'Tema',
+                    'type'          => 'Tür',
+                    'view'          => 'Görünüm',
                 ],
             ],
 
@@ -3344,7 +3355,7 @@ return [
                 'title' => 'Genel',
 
                 'general' => [
-                    'info'  => 'Birim seçeneklerini ayarlayın.',
+                    'info'  => 'Birim seçeneklerini ayarlayın ve breadcrumbs\'ı etkinleştirin veya devre dışı bırakın.',
                     'title' => 'Genel',
 
                     'unit-options' => [
@@ -3362,7 +3373,7 @@ return [
                 ],
 
                 'content' => [
-                    'info'  => 'Karşılaştırma seçeneklerini, dilek listesi seçeneklerini, görüntü arama seçeneklerini, alt bilgiyi, alt bilgiyi açma/kapatma ve özel komut dosyalarını ayarlayın.',
+                    'info'  => 'Başlık teklif başlığını ve özel komut dosyalarını ayarlayın.',
                     'title' => 'İçerik',
 
                     'header-offer' => [
@@ -3382,7 +3393,7 @@ return [
                 ],
 
                 'design' => [
-                    'info'  => 'Logo ve favicon simgesini ayarlayın.',
+                    'info'  => 'Yönetici paneli için logo ve favicon simgesini ayarlayın.',
                     'title' => 'Tasarım',
 
                     'admin-logo' => [
@@ -3394,7 +3405,7 @@ return [
                 ],
 
                 'magic-ai' => [
-                    'info'  => 'Magic AI seçeneklerini ayarlayın.',
+                    'info'  => 'Magic AI seçeneklerini ayarlayın ve içerik oluşturmayı otomatikleştirmek için bazı seçeneklere izin verin.',
                     'title' => 'Magic AI',
 
                     'settings' => [
@@ -3468,7 +3479,7 @@ return [
                 'title' => 'Katalog',
 
                 'products' => [
-                    'info'  => 'Konuk ödeme, ürün görüntüleme sayfası, sepet görüntüleme sayfası, mağaza ön yüzü, inceleme ve öznitelik sosyal paylaşımını ayarlayın.',
+                    'info'  => 'Ürün görüntüleme sayfası, sepet görüntüleme sayfası, mağaza vitrini, inceleme ve özellik sosyal paylaşımı.',
                     'title' => 'Ürünler',
 
                     'settings' => [
@@ -3617,7 +3628,7 @@ return [
 
                 'inventory' => [
                     'title'      => 'Envanter',
-                    'title-info' => 'Envanter ayarlarını yapılandırarak geri siparişlere izin verme, minimum ve maksimum sepet miktarlarını belirleme ve stokta olmayan eşik değerini tanımlama.',
+                    'title-info' => 'Geri siparişlere izin vermek ve stok dışı eşik değerini tanımlamak için envanter ayarlarını yapılandırın.',
 
                     'product-stock-options' => [
                         'allow-back-orders'       => 'Geri Siparişlere İzin Ver',
@@ -3656,7 +3667,7 @@ return [
 
                 'captcha' => [
                     'info'  => 'Site anahtarını, gizli anahtarını ve durumunu ayarlayın.',
-                    'title' => 'Captcha',
+                    'title' => 'Google Captcha',
 
                     'credentials' => [
                         'secret-key' => 'Gizli Anahtar',
@@ -3673,7 +3684,7 @@ return [
                 ],
 
                 'settings' => [
-                    'settings-info' => 'Bülten aboneliklerini, e-posta doğrulamalarını ve sosyal girişi ayarlayın.',
+                    'settings-info' => 'İstek listesi, giriş yönlendirmesi, bülten abonelikleri, varsayılan grup seçeneği, e-posta doğrulamaları ve sosyal giriş ayarlarını yapılandırın.',
                     'title'         => 'Ayarlar',
 
                     'login-as-customer' => [
@@ -3758,16 +3769,20 @@ return [
                 ],
 
                 'notifications' => [
-                    'cancel-order'                                     => 'Bir sipariş iptal edildikten sonra bildirim gönder',
-                    'customer'                                         => 'Kayıt olduktan sonra müşteri hesap bilgilerini gönder',
+                    'cancel-order'                                     => 'Sipariş iptal edildikten sonra müşteriye bildirim gönder',
+                    'cancel-order-mail-to-admin'                       => 'Sipariş iptal edildikten sonra yöneticiye bir bildirim e-postası gönder',
+                    'customer'                                         => 'Kayıttan sonra müşteri hesap bilgilerini gönder',
                     'customer-registration-confirmation-mail-to-admin' => 'Müşteri kaydından sonra yöneticiye bir onay e-postası gönder',
-                    'info'                                             => 'Geri siparişlere izin vermek için ürün stok seçeneklerini yapılandırın, minimum ve maksimum sepet miktarlarını ayarlayın ve stok dışı eşiklerini tanımlayın.',
-                    'new-admin'                                        => 'Yeni bir sipariş verildikten sonra yöneticiye bir onay e-postası gönder',
-                    'new-inventory-source'                             => 'Bir sevkiyat oluşturduktan sonra envanter kaynağına bir bildirim e-postası gönder',
-                    'new-invoice'                                      => 'Yeni bir fatura oluşturduktan sonra müşteriye bir bildirim e-postası gönder',
+                    'info'                                             => 'Hesap doğrulaması, sipariş onayları, faturalar, iadeler, gönderimler ve sipariş iptalleri hakkında e-postalar almak için yapılandırın.',
+                    'new-inventory-source'                             => 'Gönderim oluşturulduktan sonra envanter kaynağına bir bildirim e-postası gönder',
+                    'new-invoice'                                      => 'Yeni bir fatura oluşturulduktan sonra müşteriye bir bildirim e-postası gönder',
+                    'new-invoice-mail-to-admin'                        => 'Yeni bir fatura oluşturulduktan sonra yöneticiye bir bildirim e-postası gönder',
                     'new-order'                                        => 'Yeni bir sipariş verildikten sonra müşteriye bir onay e-postası gönder',
-                    'new-refund'                                       => 'Bir iade oluşturduktan sonra müşteriye bir bildirim e-postası gönder',
-                    'new-shipment'                                     => 'Bir sevkiyat oluşturduktan sonra müşteriye bir bildirim e-postası gönder',
+                    'new-order-mail-to-admin'                          => 'Yeni bir sipariş verildikten sonra yöneticiye bir onay e-postası gönder',
+                    'new-refund'                                       => 'Bir iade oluşturulduktan sonra müşteriye bir bildirim e-postası gönder',
+                    'new-refund-mail-to-admin'                         => 'Yeni bir iade oluşturulduktan sonra yöneticiye bir bildirim e-postası gönder',
+                    'new-shipment'                                     => 'Bir gönderim oluşturulduktan sonra müşteriye bir bildirim e-postası gönder',
+                    'new-shipment-mail-to-admin'                       => 'Yeni bir gönderim oluşturulduktan sonra yöneticiye bir bildirim e-postası gönder',
                     'registration'                                     => 'Müşteri kaydından sonra bir onay e-postası gönder',
                     'title'                                            => 'Bildirimler',
                     'verification'                                     => 'Müşteri kaydından sonra bir doğrulama e-postası gönder',
@@ -3926,6 +3941,7 @@ return [
                         'invoice-id-info'  => 'Fatura Başlığında Fatura Kimliği\'nin görüntülenmesini yapılandırın.',
                         'invoice-id-title' => 'Başlıkta Fatura Kimliği\'ni Göster',
                         'logo'             => 'Logo',
+                        'logo-info'        => 'Görüntü çözünürlüğü 131px X 30px olmalıdır.',
                         'order-id-info'    => 'Fatura Başlığında Sipariş Kimliği\'nin görüntülenmesini yapılandırın.',
                         'order-id-title'   => 'Başlıkta Sipariş Kimliği\'ni Göster',
                         'title'            => 'PDF Yazdırmaları',
@@ -3997,7 +4013,7 @@ return [
 
                 'checkout' => [
                     'title' => 'Ödeme',
-                    'info'  => 'Mini Sepet, Sepet Özeti\'ni etkinleştirin veya devre dışı bırakın.',
+                    'info'  => 'Misafir ödeme ayarlarını yapın, Mini Sepeti etkinleştir veya devre dışı bırak, sepet özeti.',
 
                     'shopping-cart' => [
                         'cart-page'              => 'Sepet Sayfası',
@@ -4107,6 +4123,10 @@ return [
                 'transactions'             => 'İşlemler',
                 'url-rewrites'             => 'URL Yeniden Yazma',
                 'users'                    => 'Kullanıcılar',
+            ],
+
+            'powered-by' => [
+                'description' => ':webkul tarafından geliştirilen açık kaynaklı bir proje olan :bagisto tarafından desteklenmektedir.',
             ],
         ],
 

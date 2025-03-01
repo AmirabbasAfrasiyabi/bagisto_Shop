@@ -3,38 +3,41 @@
 return [
     'users' => [
         'sessions' => [
-            'email'                => 'メールアドレス',
-            'forget-password-link' => 'パスワードを忘れましたか？',
-            'password'             => 'パスワード',
-            'submit-btn'           => 'サインイン',
-            'title'                => 'サインイン',
+            'email'                  => 'メールアドレス',
+            'forget-password-link'   => 'パスワードを忘れましたか？',
+            'password'               => 'パスワード',
+            'powered-by-description' => ':webkul によるオープンソースプロジェクト :bagisto によって提供されています。',
+            'submit-btn'             => 'サインイン',
+            'title'                  => 'サインイン',
         ],
 
         'forget-password' => [
             'create'    => [
-                'email'           => '登録済みメールアドレス',
-                'email-not-exist' => 'メールアドレスが存在しません',
-                'page-title'      => 'パスワードを忘れる',
-                'reset-link-sent' => 'パスワードリセットリンク送信済み',
-                'sign-in-link'    => 'サインイン画面に戻る？',
-                'submit-btn'      => 'リセット',
-                'title'           => 'パスワードを回復',
+                'email'                  => '登録済みメールアドレス',
+                'email-not-exist'        => 'メールアドレスが存在しません',
+                'page-title'             => 'パスワードを忘れる',
+                'powered-by-description' => ':webkul によるオープンソースプロジェクト :bagisto によって提供されています。',
+                'reset-link-sent'        => 'パスワードリセットリンク送信済み',
+                'sign-in-link'           => 'サインイン画面に戻る？',
+                'submit-btn'             => 'リセット',
+                'title'                  => 'パスワードを回復',
             ],
         ],
 
         'reset-password' => [
-            'back-link-title'  => 'サインイン画面に戻る？',
-            'confirm-password' => 'パスワードを確認',
-            'email'            => '登録済みメールアドレス',
-            'password'         => 'パスワード',
-            'submit-btn'       => 'パスワードをリセット',
-            'title'            => 'パスワードをリセット',
+            'back-link-title'        => 'サインイン画面に戻る？',
+            'confirm-password'       => 'パスワードを確認',
+            'email'                  => '登録済みメールアドレス',
+            'password'               => 'パスワード',
+            'powered-by-description' => ':webkul によるオープンソースプロジェクト :bagisto によって提供されています。',
+            'submit-btn'             => 'パスワードをリセット',
+            'title'                  => 'パスワードをリセット',
         ],
     ],
 
     'notifications' => [
         'description-text' => 'すべての通知をリストアップ',
-        'marked-success'   => 'お知らせが正常にマークされました',
+        'marked-success'   => 'すべての通知が既読としてマークされました',
         'no-record'        => '記録が見つかりません',
         'of'               => 'の',
         'per-page'         => 'ページごと',
@@ -43,6 +46,7 @@ return [
         'view-all'         => 'すべて表示',
 
         'order-status-messages' => [
+            'all'             => 'すべて',
             'canceled'        => '注文キャンセル',
             'closed'          => '注文終了',
             'completed'       => '注文完了',
@@ -715,7 +719,6 @@ return [
                     'payment-method'   => '支払い方法',
                     'status'           => 'ステータス',
                     'title'            => '取引の詳細',
-                    'transaction-data' => '取引データ',
                     'transaction-id'   => '取引ID',
                 ],
             ],
@@ -1060,6 +1063,7 @@ return [
                     'date-time'           => '日付と時刻',
                     'delete'              => '削除',
                     'edit'                => '編集',
+                    'false'               => '偽',
                     'file'                => 'ファイル',
                     'id'                  => 'ID',
                     'image'               => '画像',
@@ -1072,6 +1076,7 @@ return [
                     'select'              => '選択',
                     'text'                => 'テキスト',
                     'textarea'            => 'テキストエリア',
+                    'true'                => '真',
                     'type'                => 'タイプ',
                     'unique'              => 'ユニーク',
                 ],
@@ -1408,6 +1413,7 @@ return [
                     'gender'         => '性別',
                     'group'          => 'グループ',
                     'id'             => '顧客ID',
+                    'id-value'       => 'ID - :id',
                     'inactive'       => '非アクティブ',
                     'method-error'   => 'エラー！誤ったメソッドが検出されました。マスアクションの構成を確認してください',
                     'name'           => '顧客名',
@@ -2515,18 +2521,20 @@ return [
                 ],
 
                 'create' => [
-                    'code'              => 'コード',
-                    'create-btn'        => '通貨を作成',
-                    'currency-position' => '通貨位置',
-                    'decimal'           => '小数点',
-                    'decimal-separator' => '小数点区切り文字',
-                    'delete-warning'    => '本当にこのアクションを実行しますか？',
-                    'general'           => '一般',
-                    'group-separator'   => 'グループ区切り',
-                    'name'              => '名前',
-                    'save-btn'          => '通貨を保存',
-                    'symbol'            => '記号',
-                    'title'             => '新しい通貨を作成',
+                    'code'                   => 'コード',
+                    'create-btn'             => '通貨を作成',
+                    'currency-position'      => '通貨位置',
+                    'decimal'                => '小数点',
+                    'decimal-separator'      => '小数点区切り文字',
+                    'decimal-separator-note' => ':attribute フィールドはカンマ (,) とドット (.) のみを受け付けます',
+                    'delete-warning'         => '本当にこのアクションを実行しますか？',
+                    'general'                => '一般',
+                    'group-separator'        => 'グループ区切り',
+                    'group-separator-note'   => ':attribute フィールドには、カンマ (,)、ドット (.)、アポストロフィ (\')、スペース ( ) のみを使用できます。',
+                    'name'                   => '名前',
+                    'save-btn'               => '通貨を保存',
+                    'symbol'                 => '記号',
+                    'title'                  => '新しい通貨を作成',
                 ],
 
                 'edit' => [
@@ -2572,6 +2580,7 @@ return [
                     'allowed-errors'      => '許可されたエラー',
                     'back-btn'            => '戻る',
                     'create-update'       => '作成/更新',
+                    'current-file'        => '現在アップロードされたファイル',
                     'delete'              => '削除',
                     'download-sample'     => 'サンプルをダウンロード',
                     'field-separator'     => 'フィールドセパレータ',
@@ -2799,6 +2808,7 @@ return [
                         'title' => '税カテゴリーを編集',
                     ],
 
+                    'can-not-delete' => '税率が割り当てられているカテゴリは削除できません。',
                     'create-success' => '新しい税カテゴリーが作成されました',
                     'delete-failed'  => '税カテゴリーの削除に失敗しました',
                     'delete-success' => '税カテゴリーが正常に削除されました',
@@ -3077,17 +3087,18 @@ return [
                 'title'      => 'テーマ',
 
                 'datagrid' => [
-                    'active'       => 'アクティブ',
-                    'channel_name' => 'チャンネル名',
-                    'delete'       => '削除',
-                    'id'           => 'ID',
-                    'inactive'     => '非アクティブ',
-                    'name'         => '名前',
-                    'sort-order'   => '並び替え順',
-                    'status'       => 'ステータス',
-                    'theme'        => 'テーマ',
-                    'type'         => 'タイプ',
-                    'view'         => '表示',
+                    'active'        => 'アクティブ',
+                    'channel_name'  => 'チャンネル名',
+                    'change-status' => 'ステータスを変更',
+                    'delete'        => '削除',
+                    'id'            => 'ID',
+                    'inactive'      => '非アクティブ',
+                    'name'          => '名前',
+                    'sort-order'    => '並び替え順',
+                    'status'        => 'ステータス',
+                    'theme'         => 'テーマ',
+                    'type'          => 'タイプ',
+                    'view'          => '表示',
                 ],
             ],
 
@@ -3344,7 +3355,7 @@ return [
                 'title' => '一般',
 
                 'general' => [
-                    'info'  => 'ユニットオプションを設定します。',
+                    'info'  => 'ユニットオプションを設定し、パンくずリストを有効または無効にします。',
                     'title' => '一般',
 
                     'unit-options' => [
@@ -3362,7 +3373,7 @@ return [
                 ],
 
                 'content' => [
-                    'info'  => '比較オプション、ウィッシュリストオプション、画像検索オプション、フッター、フッターの切り替え、カスタムスクリプトを設定します。',
+                    'info'  => 'ヘッダーオファータイトルとカスタムスクリプトを設定します。',
                     'title' => 'コンテンツ',
 
                     'header-offer' => [
@@ -3382,7 +3393,7 @@ return [
                 ],
 
                 'design' => [
-                    'info'  => 'ロゴとファビコンアイコンを設定します。',
+                    'info'  => '管理パネルのロゴとファビコンアイコンを設定します。',
                     'title' => 'デザイン',
 
                     'admin-logo' => [
@@ -3394,7 +3405,7 @@ return [
                 ],
 
                 'magic-ai' => [
-                    'info'  => 'Magic AIオプションを設定します。',
+                    'info'  => 'Magic AIオプションを設定し、コンテンツの作成を自動化するためのいくつかのオプションを許可します。',
                     'title' => 'Magic AI',
 
                     'settings' => [
@@ -3468,7 +3479,7 @@ return [
                 'title' => 'カタログ',
 
                 'products' => [
-                    'info'  => 'ゲストチェックアウト、製品ビューページ、カートビューページ、ストアフロント、レビュー、属性のソーシャルシェアを設定します。',
+                    'info'  => '製品表示ページ、カート表示ページ、店舗フロント、レビューおよび属性のソーシャル共有。',
                     'title' => '製品',
 
                     'settings' => [
@@ -3617,7 +3628,7 @@ return [
 
                 'inventory' => [
                     'title'      => '在庫',
-                    'title-info' => 'バックオーダーを許可し、最小および最大のカート数量を設定し、在庫切れのしきい値を定義するための在庫設定を構成します。',
+                    'title-info' => 'バックオーダーを許可し、在庫切れのしきい値を定義するために在庫設定を構成します。',
 
                     'product-stock-options' => [
                         'allow-back-orders'       => 'バックオーダーを許可する',
@@ -3656,7 +3667,7 @@ return [
 
                 'captcha' => [
                     'info'  => 'サイトキー、シークレットキー、ステータスを設定します。',
-                    'title' => 'キャプチャ',
+                    'title' => 'Google キャプチャ',
 
                     'credentials' => [
                         'secret-key' => 'シークレットキー',
@@ -3673,7 +3684,7 @@ return [
                 ],
 
                 'settings' => [
-                    'settings-info' => 'ニュースレターの購読、メールの確認、ソーシャルログインを設定します。',
+                    'settings-info' => 'ウィッシュリスト、ログインリダイレクト、ニュースレター購読、デフォルトグループオプション、メール確認、およびソーシャルログインを設定します。',
                     'title'         => '設定',
 
                     'login-as-customer' => [
@@ -3758,16 +3769,20 @@ return [
                 ],
 
                 'notifications' => [
-                    'cancel-order'                                     => '注文をキャンセルした後に通知を送信する',
-                    'customer'                                         => '登録後に顧客アカウントの資格情報を送信する',
-                    'customer-registration-confirmation-mail-to-admin' => '顧客登録後に管理者に確認メールを送信する',
-                    'info'                                             => '製品の在庫オプションを設定し、バックオーダーを許可し、カートの最小および最大数量を設定し、在庫切れのしきい値を定義します。',
-                    'new-admin'                                        => '新しい注文後に管理者に確認メールを送信する',
+                    'cancel-order'                                     => '注文がキャンセルされた後、顧客に通知を送信する',
+                    'cancel-order-mail-to-admin'                       => '注文キャンセル後に管理者へ通知メールを送信する',
+                    'customer'                                         => '登録後に顧客のアカウント情報を送信する',
+                    'customer-registration-confirmation-mail-to-admin' => '顧客登録後に管理者へ確認メールを送信する',
+                    'info'                                             => 'アカウント確認、注文確認、請求書、払い戻し、出荷、注文キャンセルのメールを受信するように設定します。',
                     'new-inventory-source'                             => '出荷作成後に在庫ソースに通知メールを送信する',
-                    'new-invoice'                                      => '新しい請求書作成後に顧客に通知メールを送信する',
-                    'new-order'                                        => '新しい注文後に顧客に確認メールを送信する',
-                    'new-refund'                                       => '返金作成後に顧客に通知メールを送信する',
-                    'new-shipment'                                     => '出荷作成後に顧客に通知メールを送信する',
+                    'new-invoice'                                      => '新しい請求書作成後に顧客へ通知メールを送信する',
+                    'new-invoice-mail-to-admin'                        => '新しい請求書作成後に管理者へ通知メールを送信する',
+                    'new-order'                                        => '新規注文後に顧客へ確認メールを送信する',
+                    'new-order-mail-to-admin'                          => '新規注文後に管理者へ確認メールを送信する',
+                    'new-refund'                                       => '払い戻し作成後に顧客へ通知メールを送信する',
+                    'new-refund-mail-to-admin'                         => '払い戻し作成後に管理者へ通知メールを送信する',
+                    'new-shipment'                                     => '出荷作成後に顧客へ通知メールを送信する',
+                    'new-shipment-mail-to-admin'                       => '出荷作成後に管理者へ通知メールを送信する',
                     'registration'                                     => '顧客登録後に確認メールを送信する',
                     'title'                                            => '通知',
                     'verification'                                     => '顧客登録後に確認メールを送信する',
@@ -3926,6 +3941,7 @@ return [
                         'invoice-id-info'  => '請求書ヘッダーに請求書IDを表示するように設定します。',
                         'invoice-id-title' => 'ヘッダーに請求書IDを表示',
                         'logo'             => 'ロゴ',
+                        'logo-info'        => '画像の解像度は131px x 30pxであるべきです。',
                         'order-id-info'    => '請求書ヘッダーに注文IDを表示するように設定します。',
                         'order-id-title'   => 'ヘッダーに注文IDを表示',
                         'title'            => 'PDF印刷アウト',
@@ -3997,7 +4013,7 @@ return [
 
                 'checkout' => [
                     'title' => 'チェックアウト',
-                    'info'  => 'ミニカート、カートの概要の有効化または無効化。',
+                    'info'  => 'ゲストチェックアウトを設定、ミニカートを有効または無効にする、カートの概要。',
 
                     'shopping-cart' => [
                         'cart-page'              => 'カートページ',
@@ -4107,6 +4123,10 @@ return [
                 'transactions'             => '取引',
                 'url-rewrites'             => 'URL書き換え',
                 'users'                    => 'ユーザー',
+            ],
+
+            'powered-by' => [
+                'description' => ':webkul によるオープンソースプロジェクト :bagisto によって提供されています。',
             ],
         ],
 

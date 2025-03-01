@@ -387,7 +387,10 @@ return [
         ],
 
         'media' => [
-            'add-attachments' => 'Dodaj załączniki',
+            'index' => [
+                'add-attachments' => 'Dodaj załączniki',
+                'add-image'       => 'Dodaj Obraz/Wideo',
+            ],
         ],
 
         'layouts' => [
@@ -420,6 +423,7 @@ return [
                 'mobile' => [
                     'currencies' => 'Waluty',
                     'locales'    => 'Lokalizacje',
+                    'login'      => 'Zarejestruj się lub Zaloguj się',
                 ],
             ],
 
@@ -973,6 +977,12 @@ return [
                 'greeting'    => 'Witaj w naszym newsletterze!',
                 'subject'     => 'Zapisano się na nasz newsletter',
                 'unsubscribe' => 'Wypisz się',
+            ],
+
+            'reminder' => [
+                'already-paid'    => 'Jeśli już dokonałeś płatności, zignoruj tę wiadomość.',
+                'invoice-overdue' => 'To uprzejme przypomnienie, że twoja faktura jest zaległa. Prosimy o dokonanie płatności najszybciej, jak to możliwe.',
+                'subject'         => 'Przypomnienie o fakturze',
             ],
         ],
 

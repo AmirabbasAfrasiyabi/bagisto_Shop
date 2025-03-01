@@ -3,38 +3,41 @@
 return [
     'users' => [
         'sessions' => [
-            'email'                => 'E-mailadres',
-            'forget-password-link' => 'Wachtwoord Vergeten?',
-            'password'             => 'Wachtwoord',
-            'submit-btn'           => 'Aanmelden',
-            'title'                => 'Aanmelden',
+            'email'                  => 'E-mailadres',
+            'forget-password-link'   => 'Wachtwoord Vergeten?',
+            'password'               => 'Wachtwoord',
+            'powered-by-description' => 'Aangedreven door :bagisto, een open-source project van :webkul.',
+            'submit-btn'             => 'Aanmelden',
+            'title'                  => 'Aanmelden',
         ],
 
         'forget-password' => [
             'create' => [
-                'email'           => 'Geregistreerd E-mailadres',
-                'email-not-exist' => 'E-mailadres Bestaat Niet',
-                'page-title'      => 'Wachtwoord Vergeten',
-                'reset-link-sent' => 'Reset Wachtwoordlink Verzonden',
-                'sign-in-link'    => 'Terug naar Aanmelden?',
-                'submit-btn'      => 'Herstellen',
-                'title'           => 'Wachtwoord Herstellen',
+                'email'                  => 'Geregistreerd E-mailadres',
+                'email-not-exist'        => 'E-mailadres Bestaat Niet',
+                'page-title'             => 'Wachtwoord Vergeten',
+                'powered-by-description' => 'Aangedreven door :bagisto, een open-source project van :webkul.',
+                'reset-link-sent'        => 'Reset Wachtwoordlink Verzonden',
+                'sign-in-link'           => 'Terug naar Aanmelden?',
+                'submit-btn'             => 'Herstellen',
+                'title'                  => 'Wachtwoord Herstellen',
             ],
         ],
 
         'reset-password' => [
-            'back-link-title'  => 'Terug naar Aanmelden?',
-            'confirm-password' => 'Bevestig Wachtwoord',
-            'email'            => 'Geregistreerd E-mailadres',
-            'password'         => 'Wachtwoord',
-            'submit-btn'       => 'Wachtwoord Herstellen',
-            'title'            => 'Wachtwoord Herstellen',
+            'back-link-title'        => 'Terug naar Aanmelden?',
+            'confirm-password'       => 'Bevestig Wachtwoord',
+            'email'                  => 'Geregistreerd E-mailadres',
+            'password'               => 'Wachtwoord',
+            'powered-by-description' => 'Aangedreven door :bagisto, een open-source project van :webkul.',
+            'submit-btn'             => 'Wachtwoord Herstellen',
+            'title'                  => 'Wachtwoord Herstellen',
         ],
     ],
 
     'notifications' => [
         'description-text' => 'Alle meldingen weergeven',
-        'marked-success'   => 'Melding Succesvol Gemarkeerd',
+        'marked-success'   => 'Alle meldingen zijn gemarkeerd als gelezen',
         'no-record'        => 'Geen Records Gevonden',
         'of'               => 'van',
         'per-page'         => 'Per pagina',
@@ -43,6 +46,7 @@ return [
         'view-all'         => 'Alles Bekijken',
 
         'order-status-messages' => [
+            'all'             => 'Alles',
             'canceled'        => 'Bestelling Geannuleerd',
             'closed'          => 'Bestelling Gesloten',
             'completed'       => 'Bestelling Voltooid',
@@ -715,7 +719,6 @@ return [
                     'payment-method'   => 'Betalingsmethode',
                     'status'           => 'Status',
                     'title'            => 'Transactiegegevens',
-                    'transaction-data' => 'Transactiegegevens',
                     'transaction-id'   => 'Transactie-ID',
                 ],
             ],
@@ -1060,6 +1063,7 @@ return [
                     'date-time'           => 'Datum Tijd',
                     'delete'              => 'Verwijderen',
                     'edit'                => 'Bewerken',
+                    'false'               => 'Onwaar',
                     'file'                => 'Bestand',
                     'id'                  => 'ID',
                     'image'               => 'Afbeelding',
@@ -1072,6 +1076,7 @@ return [
                     'select'              => 'Selecteren',
                     'text'                => 'Tekst',
                     'textarea'            => 'Tekstgebied',
+                    'true'                => 'Waar',
                     'type'                => 'Type',
                     'unique'              => 'Uniek',
                 ],
@@ -1408,6 +1413,7 @@ return [
                     'gender'         => 'Geslacht',
                     'group'          => 'Groep',
                     'id'             => 'Klant ID',
+                    'id-value'       => 'ID - :id',
                     'inactive'       => 'Inactief',
                     'method-error'   => 'Fout! Verkeerde methode gedetecteerd, controleer alstublieft de mass action-configuratie',
                     'name'           => 'Klantnaam',
@@ -2515,18 +2521,20 @@ return [
                 ],
 
                 'create' => [
-                    'code'              => 'Code',
-                    'create-btn'        => 'Valuta Aanmaken',
-                    'currency-position' => 'Valutapositie',
-                    'decimal'           => 'Decimalen',
-                    'decimal-separator' => 'Decimaalscheidingsteken',
-                    'delete-warning'    => 'Weet je zeker dat je deze actie wilt uitvoeren?',
-                    'general'           => 'Algemeen',
-                    'group-separator'   => 'Groepsscheidingsteken',
-                    'name'              => 'Naam',
-                    'save-btn'          => 'Valuta Opslaan',
-                    'symbol'            => 'Symbool',
-                    'title'             => 'Nieuwe Valuta Aanmaken',
+                    'code'                   => 'Code',
+                    'create-btn'             => 'Valuta Aanmaken',
+                    'currency-position'      => 'Valutapositie',
+                    'decimal'                => 'Decimalen',
+                    'decimal-separator'      => 'Decimaalscheidingsteken',
+                    'decimal-separator-note' => 'Het :attribute veld kan alleen de komma (,) en punt (.) operators accepteren',
+                    'delete-warning'         => 'Weet je zeker dat je deze actie wilt uitvoeren?',
+                    'general'                => 'Algemeen',
+                    'group-separator'        => 'Groepsscheidingsteken',
+                    'group-separator-note'   => 'Het veld :attribute mag alleen de tekens komma (,), punt (.), apostrof (\') en spatie ( ) bevatten.',
+                    'name'                   => 'Naam',
+                    'save-btn'               => 'Valuta Opslaan',
+                    'symbol'                 => 'Symbool',
+                    'title'                  => 'Nieuwe Valuta Aanmaken',
                 ],
 
                 'edit' => [
@@ -2572,6 +2580,7 @@ return [
                     'allowed-errors'      => 'Toegestane Fouten',
                     'back-btn'            => 'Terug',
                     'create-update'       => 'Creëren/Bijwerken',
+                    'current-file'        => 'Huidig Geüpload Bestand',
                     'delete'              => 'Verwijderen',
                     'download-sample'     => 'Voorbeeld Downloaden',
                     'field-separator'     => 'Veldscheider',
@@ -2799,6 +2808,7 @@ return [
                         'title' => 'Belastingcategorieën Bewerken',
                     ],
 
+                    'can-not-delete' => 'Belastingtarieven toegewezen categorieën kunnen niet worden verwijderd.',
                     'create-success' => 'Nieuwe belastingcategorie aangemaakt',
                     'delete-failed'  => 'Verwijderen van belastingcategorie mislukt',
                     'delete-success' => 'Belastingcategorie succesvol verwijderd',
@@ -3077,17 +3087,18 @@ return [
                 'title'      => 'Thema\'s',
 
                 'datagrid' => [
-                    'active'       => 'Actief',
-                    'channel_name' => 'Kanaalnaam',
-                    'delete'       => 'Verwijderen',
-                    'id'           => 'ID',
-                    'inactive'     => 'Inactief',
-                    'name'         => 'Naam',
-                    'sort-order'   => 'Sorteervolgorde',
-                    'status'       => 'Status',
-                    'theme'        => 'Thema',
-                    'type'         => 'Type',
-                    'view'         => 'Bekijken',
+                    'active'        => 'Actief',
+                    'channel_name'  => 'Kanaalnaam',
+                    'change-status' => 'Status wijzigen',
+                    'delete'        => 'Verwijderen',
+                    'id'            => 'ID',
+                    'inactive'      => 'Inactief',
+                    'name'          => 'Naam',
+                    'sort-order'    => 'Sorteervolgorde',
+                    'status'        => 'Status',
+                    'theme'         => 'Thema',
+                    'type'          => 'Type',
+                    'view'          => 'Bekijken',
                 ],
             ],
 
@@ -3344,7 +3355,7 @@ return [
                 'title' => 'Algemeen',
 
                 'general' => [
-                    'info'  => 'Stel eenhedensopties in.',
+                    'info'  => 'Stel eenhedensopties in en schakel broodkruimelnavigatie in of uit.',
                     'title' => 'Algemeen',
 
                     'unit-options' => [
@@ -3362,7 +3373,7 @@ return [
                 ],
 
                 'content' => [
-                    'info'  => 'Stel vergelijkingsmogelijkheden, verlanglijstopties, afbeeldingszoekopties, voettekst, voettekst in- of uitschakelen en aangepaste scripts in.',
+                    'info'  => 'Stel de titel van de aanbieding in de koptekst en aangepaste scripts in.',
                     'title' => 'Inhoud',
 
                     'header-offer' => [
@@ -3382,7 +3393,7 @@ return [
                 ],
 
                 'design' => [
-                    'info'  => 'Stel logo en favicon-pictogram in.',
+                    'info'  => 'Stel logo en favicon-pictogram in voor het beheerderspaneel.',
                     'title' => 'Ontwerp',
 
                     'admin-logo' => [
@@ -3394,7 +3405,7 @@ return [
                 ],
 
                 'magic-ai' => [
-                    'info'  => 'Stel Magic AI-opties in.',
+                    'info'  => 'Stel Magic AI-opties in en sta enkele opties toe om de creatie van inhoud te automatiseren.',
                     'title' => 'Magic AI',
 
                     'settings' => [
@@ -3468,7 +3479,7 @@ return [
                 'title' => 'Catalogus',
 
                 'products' => [
-                    'info'  => 'Stel gastafrekening in, productweergavepagina, winkelwagenweergavepagina, winkelvoorkant, beoordeling en attribuut delen via sociale media.',
+                    'info'  => 'Productweergavepagina, winkelwagenweergavepagina, etalage, beoordeling en sociale attributendelingsoptie.',
                     'title' => 'Producten',
 
                     'settings' => [
@@ -3617,7 +3628,7 @@ return [
 
                 'inventory' => [
                     'title'      => 'Voorraad',
-                    'title-info' => 'Configureer voorraadinstellingen om backorders toe te staan, minimale en maximale hoeveelheden in de winkelwagen in te stellen en de drempel voor uitverkochte producten te definiëren.',
+                    'title-info' => 'Configureer voorraadinstellingen om backorders toe te staan en de drempel voor uitverkochte producten te definiëren.',
 
                     'product-stock-options' => [
                         'allow-back-orders'       => 'Backorders toestaan',
@@ -3656,7 +3667,7 @@ return [
 
                 'captcha' => [
                     'info'  => 'Stel site sleutel, geheime sleutel en status in.',
-                    'title' => 'Captcha',
+                    'title' => 'Google Captcha',
 
                     'credentials' => [
                         'secret-key' => 'Geheime Sleutel',
@@ -3673,7 +3684,7 @@ return [
                 ],
 
                 'settings' => [
-                    'settings-info' => 'Stel nieuwsbriefabonnementen, e-mailverificaties en sociale login in.',
+                    'settings-info' => 'Stel wenslijst, inlogomleiding, nieuwsbriefabonnementen, standaard groepoptie, e-mailverificaties en sociaal inloggen in.',
                     'title'         => 'Instellingen',
 
                     'login-as-customer' => [
@@ -3758,19 +3769,23 @@ return [
                 ],
 
                 'notifications' => [
-                    'cancel-order'                                     => 'Stuur een melding na het annuleren van een bestelling',
+                    'cancel-order'                                     => 'Stuur een melding naar de klant nadat een bestelling is geannuleerd',
+                    'cancel-order-mail-to-admin'                       => 'Stuur een meldingsmail naar de beheerder na het annuleren van een bestelling',
                     'customer'                                         => 'Stuur de klantaccountgegevens na registratie',
                     'customer-registration-confirmation-mail-to-admin' => 'Stuur een bevestigingsmail naar de beheerder na klantregistratie',
-                    'info'                                             => 'Configureer productvoorraadopties om backorders toe te staan, stel minimale en maximale winkelwagenhoeveelheden in, en definieer drempels voor uitverkochte producten.',
-                    'new-admin'                                        => 'Stuur een bevestigingsmail naar de beheerder na het plaatsen van een nieuwe bestelling',
-                    'new-inventory-source'                             => 'Stuur een melding naar de voorraadbron na het maken van een zending',
-                    'new-invoice'                                      => 'Stuur een melding naar de klant na het maken van een nieuwe factuur',
+                    'info'                                             => 'Configureer om e-mails te ontvangen voor accountverificatie, bestelbevestigingen, updates over facturen, terugbetalingen, zendingen en orderannuleringen.',
+                    'new-inventory-source'                             => 'Stuur een meldingsmail naar de inventarisbron na het maken van een verzending',
+                    'new-invoice'                                      => 'Stuur een meldingsmail naar de klant na het aanmaken van een nieuwe factuur',
+                    'new-invoice-mail-to-admin'                        => 'Stuur een meldingsmail naar de beheerder na het aanmaken van een nieuwe factuur',
                     'new-order'                                        => 'Stuur een bevestigingsmail naar de klant na het plaatsen van een nieuwe bestelling',
-                    'new-refund'                                       => 'Stuur een melding naar de klant na het maken van een terugbetaling',
-                    'new-shipment'                                     => 'Stuur een melding naar de klant na het maken van een zending',
+                    'new-order-mail-to-admin'                          => 'Stuur een bevestigingsmail naar de beheerder na het plaatsen van een nieuwe bestelling',
+                    'new-refund'                                       => 'Stuur een meldingsmail naar de klant na het maken van een terugbetaling',
+                    'new-refund-mail-to-admin'                         => 'Stuur een meldingsmail naar de beheerder na het maken van een nieuwe terugbetaling',
+                    'new-shipment'                                     => 'Stuur een meldingsmail naar de klant na het maken van een zending',
+                    'new-shipment-mail-to-admin'                       => 'Stuur een meldingsmail naar de beheerder na het maken van een nieuwe zending',
                     'registration'                                     => 'Stuur een bevestigingsmail na klantregistratie',
                     'title'                                            => 'Meldingen',
-                    'verification'                                     => 'Stuur een verificatie-e-mail na klantregistratie',
+                    'verification'                                     => 'Stuur een verificatiemail na klantregistratie',
                 ],
             ],
 
@@ -3926,6 +3941,7 @@ return [
                         'invoice-id-info'  => 'Configureer de weergave van het factuurnummer in de factuurkop.',
                         'invoice-id-title' => 'Toon factuurnummer in koptekst',
                         'logo'             => 'Logo',
+                        'logo-info'        => 'De resolutie van de afbeelding moet ongeveer 131px x 30px zijn.',
                         'order-id-info'    => 'Configureer de weergave van het bestelnummer in de factuurkop.',
                         'order-id-title'   => 'Toon bestelnummer in koptekst',
                         'title'            => 'PDF-afdrukken',
@@ -3997,7 +4013,7 @@ return [
 
                 'checkout' => [
                     'title' => 'Afrekenen',
-                    'info'  => 'Schakel Mini-winkelwagen, winkelwagensamenvatting in of uit.',
+                    'info'  => 'Gastafrekenen instellen, mini-winkelwagen inschakelen of uitschakelen, winkelwagensamenvatting.',
 
                     'shopping-cart' => [
                         'cart-page'              => 'Winkelwagenpagina',
@@ -4107,6 +4123,10 @@ return [
                 'transactions'             => 'Transacties',
                 'url-rewrites'             => 'URL-herschrijvingen',
                 'users'                    => 'Gebruikers',
+            ],
+
+            'powered-by' => [
+                'description' => 'Aangedreven door :bagisto, een open-source project van :webkul.',
             ],
         ],
 

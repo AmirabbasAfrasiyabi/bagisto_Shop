@@ -387,7 +387,10 @@ return [
         ],
 
         'media' => [
-            'add-attachments' => 'Aggiungi allegati',
+            'index' => [
+                'add-attachments' => 'Aggiungi allegati',
+                'add-image'       => 'Aggiungi Immagine/Video',
+            ],
         ],
 
         'layouts' => [
@@ -420,6 +423,7 @@ return [
                 'mobile' => [
                     'currencies' => 'Valute',
                     'locales'    => 'Lingue',
+                    'login'      => 'Registrati o Accedi',
                 ],
             ],
 
@@ -973,6 +977,12 @@ return [
                 'greeting'    => 'Benvenuto nella nostra newsletter!',
                 'subject'     => 'Ti sei iscritto alla nostra newsletter!',
                 'unsubscribe' => 'Annulla iscrizione',
+            ],
+
+            'reminder' => [
+                'already-paid'    => 'Se hai già effettuato il pagamento, ignora questo messaggio.',
+                'invoice-overdue' => 'Questo è un gentile promemoria che la tua fattura è scaduta. Ti preghiamo di effettuare il pagamento al più presto.',
+                'subject'         => 'Promemoria fattura',
             ],
         ],
 

@@ -3,38 +3,41 @@
 return [
     'users' => [
         'sessions' => [
-            'email'                => 'Adresse e-mail',
-            'forget-password-link' => 'Mot de passe oublié ?',
-            'password'             => 'Mot de passe',
-            'submit-btn'           => 'Se connecter',
-            'title'                => 'Se connecter',
+            'email'                  => 'Adresse e-mail',
+            'forget-password-link'   => 'Mot de passe oublié ?',
+            'password'               => 'Mot de passe',
+            'powered-by-description' => 'Propulsé par :bagisto, un projet open-source par :webkul.',
+            'submit-btn'             => 'Se connecter',
+            'title'                  => 'Se connecter',
         ],
 
         'forget-password' => [
             'create' => [
-                'email'           => 'Adresse e-mail enregistrée',
-                'email-not-exist' => 'L\'adresse e-mail n\'existe pas',
-                'page-title'      => 'Mot de passe oublié',
-                'reset-link-sent' => 'Lien de réinitialisation du mot de passe envoyé',
-                'sign-in-link'    => 'Retour à la connexion ?',
-                'submit-btn'      => 'Réinitialiser',
-                'title'           => 'Récupérer le mot de passe',
+                'email'                  => 'Adresse e-mail enregistrée',
+                'email-not-exist'        => 'L\'adresse e-mail n\'existe pas',
+                'page-title'             => 'Mot de passe oublié',
+                'powered-by-description' => 'Propulsé par :bagisto, un projet open-source par :webkul.',
+                'reset-link-sent'        => 'Lien de réinitialisation du mot de passe envoyé',
+                'sign-in-link'           => 'Retour à la connexion ?',
+                'submit-btn'             => 'Réinitialiser',
+                'title'                  => 'Récupérer le mot de passe',
             ],
         ],
 
         'reset-password' => [
-            'back-link-title'  => 'Retour à la connexion ?',
-            'confirm-password' => 'Confirmer le mot de passe',
-            'email'            => 'Adresse e-mail enregistrée',
-            'password'         => 'Mot de passe',
-            'submit-btn'       => 'Réinitialiser le mot de passe',
-            'title'            => 'Réinitialiser le mot de passe',
+            'back-link-title'        => 'Retour à la connexion ?',
+            'confirm-password'       => 'Confirmer le mot de passe',
+            'email'                  => 'Adresse e-mail enregistrée',
+            'password'               => 'Mot de passe',
+            'powered-by-description' => 'Propulsé par :bagisto, un projet open-source par :webkul.',
+            'submit-btn'             => 'Réinitialiser le mot de passe',
+            'title'                  => 'Réinitialiser le mot de passe',
         ],
     ],
 
     'notifications' => [
         'description-text' => 'Lister toutes les notifications',
-        'marked-success'   => 'Notification marquée avec succès',
+        'marked-success'   => 'Toutes les notifications ont été marquées comme lues',
         'no-record'        => 'Aucun enregistrement trouvé',
         'of'               => 'de',
         'per-page'         => 'Par page',
@@ -43,6 +46,7 @@ return [
         'view-all'         => 'Voir tout',
 
         'order-status-messages' => [
+            'all'             => 'Tout',
             'canceled'        => 'Commande annulée',
             'closed'          => 'Commande fermée',
             'completed'       => 'Commande terminée',
@@ -715,7 +719,6 @@ return [
                     'payment-method'   => 'Méthode de Paiement',
                     'status'           => 'Statut',
                     'title'            => 'Détails de la Transaction',
-                    'transaction-data' => 'Données de la Transaction',
                     'transaction-id'   => 'Identifiant de la Transaction',
                 ],
             ],
@@ -1060,6 +1063,7 @@ return [
                     'date-time'           => 'Date et heure',
                     'delete'              => 'Supprimer',
                     'edit'                => 'Éditer',
+                    'false'               => 'Faux',
                     'file'                => 'Fichier',
                     'id'                  => 'ID',
                     'image'               => 'Image',
@@ -1072,6 +1076,7 @@ return [
                     'select'              => 'Sélectionner',
                     'text'                => 'Texte',
                     'textarea'            => 'Zone de texte',
+                    'true'                => 'Vrai',
                     'type'                => 'Type',
                     'unique'              => 'Unique',
                 ],
@@ -1408,6 +1413,7 @@ return [
                     'gender'         => 'Genre',
                     'group'          => 'Groupe',
                     'id'             => 'Identifiant du client',
+                    'id-value'       => 'ID - :id',
                     'inactive'       => 'Inactif',
                     'method-error'   => 'Erreur ! Méthode incorrecte détectée, veuillez vérifier la configuration de l\'action de masse',
                     'name'           => 'Nom du client',
@@ -2515,18 +2521,20 @@ return [
                 ],
 
                 'create' => [
-                    'code'              => 'Code',
-                    'create-btn'        => 'Créer une devise',
-                    'currency-position' => 'Position de la devise',
-                    'decimal'           => 'Décimal',
-                    'decimal-separator' => 'Séparateur décimal',
-                    'delete-warning'    => 'Êtes-vous sûr de vouloir effectuer cette action ?',
-                    'general'           => 'Général',
-                    'group-separator'   => 'Séparateur de Groupe',
-                    'name'              => 'Nom',
-                    'save-btn'          => 'Enregistrer la devise',
-                    'symbol'            => 'Symbole',
-                    'title'             => 'Créer une nouvelle devise',
+                    'code'                   => 'Code',
+                    'create-btn'             => 'Créer une devise',
+                    'currency-position'      => 'Position de la devise',
+                    'decimal'                => 'Décimal',
+                    'decimal-separator'      => 'Séparateur décimal',
+                    'decimal-separator-note' => 'Le champ :attribute ne peut accepter que les opérateurs virgule (,) et point (.)',
+                    'delete-warning'         => 'Êtes-vous sûr de vouloir effectuer cette action ?',
+                    'general'                => 'Général',
+                    'group-separator'        => 'Séparateur de Groupe',
+                    'group-separator-note'   => 'Le champ :attribute ne peut contenir que les caractères virgule (,), point (.), apostrophe (\') et espace ( ).',
+                    'name'                   => 'Nom',
+                    'save-btn'               => 'Enregistrer la devise',
+                    'symbol'                 => 'Symbole',
+                    'title'                  => 'Créer une nouvelle devise',
                 ],
 
                 'edit' => [
@@ -2572,6 +2580,7 @@ return [
                     'allowed-errors'      => 'Erreurs Autorisées',
                     'back-btn'            => 'Retour',
                     'create-update'       => 'Créer/Mettre à Jour',
+                    'current-file'        => 'Fichier téléchargé actuel',
                     'delete'              => 'Supprimer',
                     'download-sample'     => 'Télécharger un Exemple',
                     'field-separator'     => 'Séparateur de Champ',
@@ -2799,6 +2808,7 @@ return [
                         'title'   => 'Modifier les catégories de taxe',
                     ],
 
+                    'can-not-delete' => 'Les catégories assignées aux taux de taxe ne peuvent pas être supprimées.',
                     'create-success' => 'Nouvelle catégorie de taxe créée',
                     'delete-failed'  => 'Échec de la suppression de la catégorie de taxe',
                     'delete-success' => 'Catégorie de taxe supprimée avec succès',
@@ -3077,17 +3087,18 @@ return [
                 'title'      => 'Thèmes',
 
                 'datagrid' => [
-                    'active'       => 'Actif',
-                    'channel_name' => 'Nom du canal',
-                    'delete'       => 'Supprimer',
-                    'id'           => 'ID',
-                    'inactive'     => 'Inactif',
-                    'name'         => 'Nom',
-                    'sort-order'   => 'Ordre de tri',
-                    'status'       => 'Statut',
-                    'theme'        => 'Thème',
-                    'type'         => 'Type',
-                    'view'         => 'Voir',
+                    'active'        => 'Actif',
+                    'channel_name'  => 'Nom du canal',
+                    'change-status' => 'Changer le statut',
+                    'delete'        => 'Supprimer',
+                    'id'            => 'ID',
+                    'inactive'      => 'Inactif',
+                    'name'          => 'Nom',
+                    'sort-order'    => 'Ordre de tri',
+                    'status'        => 'Statut',
+                    'theme'         => 'Thème',
+                    'type'          => 'Type',
+                    'view'          => 'Voir',
                 ],
             ],
 
@@ -3344,7 +3355,7 @@ return [
                 'title' => 'Général',
 
                 'general' => [
-                    'info'  => 'Définir les options d\'unités.',
+                    'info'  => 'Définir les options d\'unités et activer ou désactiver les fils d\'Ariane.',
                     'title' => 'Général',
 
                     'unit-options' => [
@@ -3362,7 +3373,7 @@ return [
                 ],
 
                 'content' => [
-                    'info'  => 'Définir les options de comparaison, les options de liste de souhaits, les options de recherche d\'images, le pied de page, basculer le pied de page et les scripts personnalisés.',
+                    'info'  => 'Définir le titre de l\'offre d\'en-tête et les scripts personnalisés.',
                     'title' => 'Contenu',
 
                     'header-offer' => [
@@ -3382,7 +3393,7 @@ return [
                 ],
 
                 'design' => [
-                    'info'  => 'Définir le logo et l\'icône favicon.',
+                    'info'  => 'Définir le logo et l\'icône favicon pour le panneau d\'administration.',
                     'title' => 'Design',
 
                     'admin-logo' => [
@@ -3394,7 +3405,7 @@ return [
                 ],
 
                 'magic-ai' => [
-                    'info'  => 'Définir les options de Magic AI.',
+                    'info'  => 'Définir les options Magic AI et permettre certaines options pour automatiser la création de contenu.',
                     'title' => 'Magic AI',
 
                     'settings' => [
@@ -3468,7 +3479,7 @@ return [
                 'title' => 'Catalogue',
 
                 'products' => [
-                    'info'  => 'Définissez la validation des invités, la page de visualisation du produit, la page de visualisation du panier, la vitrine du magasin, l\'avis et le partage social des attributs.',
+                    'info'  => 'Page de vue produit, page de vue panier, vitrine, avis et partage social des attributs.',
                     'title' => 'Produits',
 
                     'settings' => [
@@ -3617,7 +3628,7 @@ return [
 
                 'inventory' => [
                     'title'      => 'Inventaire',
-                    'title-info' => 'Configurez les paramètres d\'inventaire pour autoriser les commandes en attente, définir les quantités minimales et maximales du panier, et définir le seuil de rupture de stock.',
+                    'title-info' => 'Configurer les paramètres d\'inventaire pour autoriser les commandes en attente et définir le seuil de rupture de stock.',
 
                     'product-stock-options' => [
                         'allow-back-orders'       => 'Autoriser les commandes en attente',
@@ -3656,7 +3667,7 @@ return [
 
                 'captcha' => [
                     'info'  => 'Définir la clé du site, la clé secrète et le statut.',
-                    'title' => 'Captcha',
+                    'title' => 'Google Captcha',
 
                     'credentials' => [
                         'secret-key' => 'Clé secrète',
@@ -3673,7 +3684,7 @@ return [
                 ],
 
                 'settings' => [
-                    'settings-info' => 'Définir les abonnements à la newsletter, les vérifications par e-mail et la connexion sociale.',
+                    'settings-info' => 'Définir la liste de souhaits, la redirection de connexion, les abonnements à la newsletter, l\'option de groupe par défaut, les vérifications par e-mail et la connexion sociale.',
                     'title'         => 'Paramètres',
 
                     'login-as-customer' => [
@@ -3758,16 +3769,20 @@ return [
                 ],
 
                 'notifications' => [
-                    'cancel-order'                                     => 'Envoyer une notification après l\'annulation d\'une commande',
-                    'customer'                                         => 'Envoyer les informations de compte client après l\'inscription',
-                    'customer-registration-confirmation-mail-to-admin' => 'Envoyer un e-mail de confirmation à l\'administrateur après l\'inscription du client',
-                    'info'                                             => 'Configurer les options de stock du produit pour permettre les commandes en attente, définir les quantités minimales et maximales dans le panier, et définir les seuils de rupture de stock.',
-                    'new-admin'                                        => 'Envoyer un e-mail de confirmation à l\'administrateur après avoir passé une nouvelle commande',
-                    'new-inventory-source'                             => 'Envoyer un e-mail de notification à la source d\'inventaire après la création d\'un envoi',
+                    'cancel-order'                                     => 'Envoyer une notification au client après l\'annulation d\'une commande',
+                    'cancel-order-mail-to-admin'                       => 'Envoyer un e-mail de notification à l\'administrateur après l\'annulation d\'une commande',
+                    'customer'                                         => 'Envoyer les identifiants du compte client après l\'inscription',
+                    'customer-registration-confirmation-mail-to-admin' => 'Envoyer un e-mail de confirmation à l\'administrateur après l\'inscription d\'un client',
+                    'info'                                             => 'Pour configurer, recevoir des e-mails pour la vérification de compte, les confirmations de commande, les mises à jour sur les factures, les remboursements, les expéditions et les annulations de commande.',
+                    'new-inventory-source'                             => 'Envoyer un e-mail de notification à la source d\'inventaire après la création d\'une expédition',
                     'new-invoice'                                      => 'Envoyer un e-mail de notification au client après la création d\'une nouvelle facture',
+                    'new-invoice-mail-to-admin'                        => 'Envoyer un e-mail de notification à l\'administrateur après la création d\'une nouvelle facture',
                     'new-order'                                        => 'Envoyer un e-mail de confirmation au client après avoir passé une nouvelle commande',
+                    'new-order-mail-to-admin'                          => 'Envoyer un e-mail de confirmation à l\'administrateur après avoir passé une nouvelle commande',
                     'new-refund'                                       => 'Envoyer un e-mail de notification au client après la création d\'un remboursement',
-                    'new-shipment'                                     => 'Envoyer un e-mail de notification au client après la création d\'un envoi',
+                    'new-refund-mail-to-admin'                         => 'Envoyer un e-mail de notification à l\'administrateur après la création d\'un nouveau remboursement',
+                    'new-shipment'                                     => 'Envoyer un e-mail de notification au client après la création d\'une expédition',
+                    'new-shipment-mail-to-admin'                       => 'Envoyer un e-mail de notification à l\'administrateur après la création d\'une nouvelle expédition',
                     'registration'                                     => 'Envoyer un e-mail de confirmation après l\'inscription du client',
                     'title'                                            => 'Notifications',
                     'verification'                                     => 'Envoyer un e-mail de vérification après l\'inscription du client',
@@ -3926,6 +3941,7 @@ return [
                         'invoice-id-info'  => 'Configurer l\'affichage de l\'ID de la facture dans l\'en-tête de la facture.',
                         'invoice-id-title' => 'Afficher l\'ID de la facture dans l\'en-tête',
                         'logo'             => 'Logo',
+                        'logo-info'        => 'La résolution de l\'image doit être de 131px x 30px.',
                         'order-id-info'    => 'Configurer l\'affichage de l\'ID de la commande dans l\'en-tête de la facture.',
                         'order-id-title'   => 'Afficher l\'ID de la commande dans l\'en-tête',
                         'title'            => 'Impressions PDF',
@@ -3997,7 +4013,7 @@ return [
 
                 'checkout' => [
                     'title' => 'Validation de la commande',
-                    'info'  => 'Activer ou désactiver le mini panier, le résumé du panier.',
+                    'info'  => 'Définir le paiement en tant qu\'invité, activer ou désactiver le mini-panier, résumé du panier.',
 
                     'shopping-cart' => [
                         'cart-page'              => 'Page du panier',
@@ -4107,6 +4123,10 @@ return [
                 'transactions'             => 'Transactions',
                 'url-rewrites'             => 'Réécritures d\'URL',
                 'users'                    => 'Utilisateurs',
+            ],
+
+            'powered-by' => [
+                'description' => 'Propulsé par :bagisto, un projet open-source par :webkul.',
             ],
         ],
 

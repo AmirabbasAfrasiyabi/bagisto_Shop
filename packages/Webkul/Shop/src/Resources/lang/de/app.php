@@ -387,7 +387,10 @@ return [
         ],
 
         'media' => [
-            'add-attachments' => 'Anhänge hinzufügen',
+            'index' => [
+                'add-attachments' => 'Anhänge hinzufügen',
+                'add-image'       => 'Bild/Video hinzufügen',
+            ],
         ],
 
         'layouts' => [
@@ -420,6 +423,7 @@ return [
                 'mobile' => [
                     'currencies' => 'Währungen',
                     'locales'    => 'Sprachen',
+                    'login'      => 'Registrieren oder Einloggen',
                 ],
             ],
 
@@ -973,6 +977,12 @@ return [
                 'greeting'    => 'Willkommen in unserem Newsletter!',
                 'subject'     => 'Sie! Abonnement unseres Newsletters',
                 'unsubscribe' => 'Abmelden',
+            ],
+
+            'reminder' => [
+                'already-paid'    => 'Falls Sie die Zahlung bereits vorgenommen haben, ignorieren Sie bitte diese Nachricht.',
+                'invoice-overdue' => 'Dies ist eine freundliche Erinnerung daran, dass Ihre Rechnung überfällig ist. Bitte nehmen Sie die Zahlung so bald wie möglich vor.',
+                'subject'         => 'Rechnungserinnerung',
             ],
         ],
 

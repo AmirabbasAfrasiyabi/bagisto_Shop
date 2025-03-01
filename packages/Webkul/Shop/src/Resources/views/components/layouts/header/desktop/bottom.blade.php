@@ -78,6 +78,7 @@
                     placeholder="@lang('shop::app.components.layouts.header.search-text')"
                     aria-label="@lang('shop::app.components.layouts.header.search-text')"
                     aria-required="true"
+                    pattern="[^\\]+"
                     required
                 >
 
@@ -151,7 +152,7 @@
                             </p>
                         </div>
 
-                        <p class="py-2px mt-3 w-full border border-zinc-200"></p>
+                        <p class="mt-3 w-full border border-zinc-200"></p>
 
                         {!! view_render_event('bagisto.shop.components.layouts.header.desktop.bottom.customers_action.before') !!}
                         
@@ -193,7 +194,7 @@
                             </p>
                         </div>
 
-                        <p class="py-2px mt-3 w-full border border-zinc-200"></p>
+                        <p class="mt-3 w-full border border-zinc-200"></p>
 
                         <div class="mt-2.5 grid gap-1 pb-2.5">
                             {!! view_render_event('bagisto.shop.components.layouts.header.desktop.bottom.profile_dropdown.links.before') !!}
