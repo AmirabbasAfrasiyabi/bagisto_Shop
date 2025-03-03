@@ -100,7 +100,8 @@ There is no dependency needed to be updated at for this upgrade.
 
 ```diff
 'key'    => 'sales.taxes.categories',
-'name'   => 'admin::app.configuration.index.sales.taxes.categories.title',
+'name'   => 'admin::app.configuration.index.sales.taxes.
+categories.title',
 'info'   => 'admin::app.configuration.index.sales.taxes.categories.title-info',
 'sort'   => 1,
 'fields' => [
@@ -308,12 +309,13 @@ If you are migrating your existing store to this version, please save the config
 1. The event that was previously added in Admin has now been updated in the new format. You can now directly add your own custom elements inside the <head> tag.
 
 ```diff
+
 + {!! view_render_event('bagisto.admin.layout.head.before') !!}
 
 - {!! view_render_event('bagisto.admin.layout.head') !!}
 + {!! view_render_event('bagisto.admin.layout.head.after') !!}
-```
 
+```
 <a name="renamed-admin-view-render-event-names"></a>
 #### Renamed Admin View Render Event Names
 
