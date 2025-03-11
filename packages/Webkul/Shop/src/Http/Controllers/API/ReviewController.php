@@ -4,6 +4,7 @@ namespace Webkul\Shop\Http\Controllers\API;
 
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Facades\Event;
 use Webkul\MagicAI\Facades\MagicAI;
 use Webkul\Product\Repositories\ProductRepository;
 use Webkul\Product\Repositories\ProductReviewAttachmentRepository;
@@ -76,6 +77,26 @@ class ReviewController extends APIController
 
         return new JsonResource([
             'message' => trans('shop::app.products.view.reviews.success'),
+        ]);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param int $id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function update(int $id): JsonResponse
+    {
+        Event::dispatch('customer.review.update.before', $id);
+
+        $review = $this->productReviewRepository->update(request()->only(['status']), $id);
+
+        Event::dispatch('customer.review.update.after', $review);
+
+        return response()->json([
+            'message' => trans('admin::app.customers.reviews.update-success'),
+            'review'  => $review,
         ]);
     }
 

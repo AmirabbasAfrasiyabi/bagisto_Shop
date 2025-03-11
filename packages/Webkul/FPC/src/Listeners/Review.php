@@ -25,12 +25,6 @@ class Review
         ResponseCache::forget('/'.$review->product->url_key);
     }
 
-    /**
-     * Before review is deleted
-     *
-     * @param  \Webkul\Product\Contracts\Review  $review
-     * @return void
-     */
     public function beforeDelete($reviewId)
     {
         $review = $this->productReviewRepository->find($reviewId);
