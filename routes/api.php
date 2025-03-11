@@ -1,4 +1,11 @@
 <?php
+use Illuminate\Support\Facades\Route;
+use Webkul\Blog\Http\Controllers\PostController;
+
+Route::prefix('blog')->group(function () {
+    Route::get('/posts', [PostController::class, 'index']);
+});
+
 
 /*
 |--------------------------------------------------------------------------
