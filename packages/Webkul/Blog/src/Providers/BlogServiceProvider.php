@@ -24,6 +24,14 @@ class BlogServiceProvider extends ServiceProvider
 
         $this->loadViewsFrom(__DIR__ . '/../Resources/views', 'blog');
 
+        $this->publishes([
+            __DIR__ . '/../Config/blog.php' => config_path('blog.php'),
+        ], 'blog-config');
+    
+        $this->publishes([
+            __DIR__ . '/../Database/Migrations/' => database_path('migrations'),
+        ], 'blog-migrations');
+        
         Event::listen('bagisto.admin.layout.head', function($viewRenderEventManager) {
             $viewRenderEventManager->addTemplate('blog::admin.layouts.style');
         });
