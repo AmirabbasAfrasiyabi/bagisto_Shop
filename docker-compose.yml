@@ -1,0 +1,41 @@
+version: '3.1'
+
+services:
+    bagisto-php-apache:
+        build:
+            args:
+                container_project_path: /var/www/html/
+                uid: 1000 # Add your UID
+                user: $USER
+            context: .
+            dockerfile: ./Dockerfile
+        image: bagisto-php-apache
+        ports:
+            - 80:80 # Adjust Apache port
+        volumes:
+            - ./workspace/:/var/www/html/
+
+    bagisto-mysql:
+        image: mysql:8.0
+        command: --default-authentication-plugin=mysql_native_password
+        restart: always
+        environment:
+            MYSQL_ROOT_HOST: '%'
+            MYSQL_ROOT_PASSWORD: root
+        ports:
+            - 3306:3306 # Adjust MySQL port
+        volumes:
+            - ./.configs/mysql-data:/var/lib/mysql/
+
+    bagisto-phpmyadmin:
+        image: phpmyadmin:latest
+        restart: always
+        environment:
+            PMA_HOST: bagisto-mysql
+            PMA_USER: root
+            PMA_PASSWORD: root
+        ports:
+            - 8083:80 # Adjust PHPMyAdmin port
+
+volumes:
+    mysql-data:
