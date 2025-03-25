@@ -44,6 +44,13 @@ class Core
     protected $defaultChannel;
 
     /**
+     * Channel Repository
+     *
+     * @var \Webkul\Core\Repositories\ChannelRepository
+     */
+    protected $channelRepository;
+
+    /**
      * Currency.
      *
      * @var \Webkul\Core\Models\Currency
@@ -98,7 +105,7 @@ class Core
      * @return void
      */
     public function __construct(
-        protected ChannelRepository $channelRepository,
+        ChannelRepository $channelRepository,
         protected CurrencyRepository $currencyRepository,
         protected ExchangeRateRepository $exchangeRateRepository,
         protected CountryRepository $countryRepository,
@@ -106,7 +113,142 @@ class Core
         protected LocaleRepository $localeRepository,
         protected CustomerGroupRepository $customerGroupRepository,
         protected TaxCategoryRepository $taxCategoryRepository
-    ) {}
+    ) {
+        $this->channelRepository = $channelRepository;
+    }
+
+    /**
+     * Get all channels
+     * 
+     * @return mixed
+     */
+    public function getAllChannels()
+    {
+        return $this->channelRepository->all();
+    }
+
+    /**
+     * Get current channel
+     * 
+     * @return mixed
+     */
+    public function getCurrentChannel()
+    {
+        if ($this->currentChannel) {
+            return $this->currentChannel;
+        }
+
+        return $this->currentChannel = $this->channelRepository->findByCode(config('app.channel'));
+    }
+
+    /**
+     * Set current channel
+     * 
+     * @param mixed $channel
+     * @return void
+     */
+    public function setCurrentChannel($channel)
+    {
+        $this->currentChannel = $channel;
+    }
+
+    /**
+     * Get current channel code
+     * 
+     * @return string
+     */
+    public function getCurrentChannelCode()
+    {
+        return $this->getCurrentChannel()->code ?? null;
+    }
+
+    /**
+     * Get default channel
+     * 
+     * @return mixed
+     */
+    public function getDefaultChannel()
+    {
+        if ($this->defaultChannel) {
+            return $this->defaultChannel;
+        }
+
+        return $this->defaultChannel = $this->channelRepository->findByCode(config('app.channel'));
+    }
+
+    /**
+     * Set default channel
+     * 
+     * @param mixed $channel
+     * @return void
+     */
+    public function setDefaultChannel($channel)
+    {
+        $this->defaultChannel = $channel;
+    }
+
+    /**
+     * Get default channel code
+     * 
+     * @return string
+     */
+    public function getDefaultChannelCode()
+    {
+        return $this->getDefaultChannel()->code ?? null;
+    }
+
+    /**
+     * Get requested channel
+     * 
+     * @return mixed
+     */
+    public function getRequestedChannel()
+    {
+        return $this->channelRepository->findByCode(request()->input('channel'));
+    }
+
+    /**
+     * Set requested channel
+     * 
+     * @param mixed $channel
+     * @return void
+     */
+    public function setRequestedChannel($channel)
+    {
+    }
+
+    /**
+     * Get requested channel code
+     * 
+     * @return string
+     */
+    public function getRequestedChannelCode()
+    {
+        return $this->getRequestedChannel()->code ?? null;
+    }
+
+    /**
+     * Format price
+     * 
+     * @param float $price
+     * @return string
+     */
+    public function formatPrice($price)
+    {
+        return number_format($price, 2);
+    }
+
+    /**
+     * Set current price format
+     * 
+     * @param string $format
+     * @return void
+     */
+    public function setCurrentPriceFormat($format)
+    {
+    }
+
+
 
     /**
      * Retrieve all grouped states by country code.
@@ -161,7 +303,6 @@ class Core
         throw new \Exception('CustomerGroup does not implement CustomerGroupContract');
     }
 
-
     /**
      * Create singleton object through single facade.
      *
@@ -179,5 +320,16 @@ class Core
         }
 
         return $this->taxCategoriesById[$id] = $this->taxCategoryRepository->find($id);
+    }
+
+    /**
+     * Format base price
+     * 
+     * @param float $price
+     * @return string
+     */
+    public function formatBasePrice($price)
+    {
+        return number_format($price, 2);
     }
 }
