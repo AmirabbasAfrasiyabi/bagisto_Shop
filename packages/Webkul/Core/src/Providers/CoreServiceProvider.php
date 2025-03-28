@@ -93,11 +93,8 @@ class CoreServiceProvider extends ServiceProvider
         $this->registerBladeCompiler();
         $this->app->bind(\Webkul\Core\Repositories\ChannelRepository::class);
         
-        $this->app->singleton('core', function () {
-            return new \Webku\Core\Core(
-                $this->app->make(ChannelRepository::class),
-                $this->app->make(\Webku\Core\Repositories\CurrencyRepository::class)
-            );
+        $this->app->singleton('core', function ($app) {
+            return $app->make(Core::class);
         });
         
 

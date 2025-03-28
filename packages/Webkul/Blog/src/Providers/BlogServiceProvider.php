@@ -28,6 +28,7 @@ class BlogServiceProvider extends ServiceProvider
 
         $this->loadRoutesFrom(__DIR__ . '/../Routes/shop-routes.php');
         $this->loadViewsFrom(__DIR__ . '/../Resources/views', 'blog');
+        $this->loadTranslationsFrom(__DIR__ . '/../Resources/lang', 'blog');
         
         Event::listen('bagisto.admin.layout.head', function($viewRenderEventManager) {
             $viewRenderEventManager->addTemplate('blog::admin.layouts.style');

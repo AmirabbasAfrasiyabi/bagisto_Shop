@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Admin - Blog Posts</title>
+    <title>{{ __('admin::app.blog.page_title') }}</title>
     </head>
     <body>
         <h1>Admin - Blog Posts</h1>

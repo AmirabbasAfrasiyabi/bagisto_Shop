@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Shop - Blog Posts</title>
+    <title>{{ __('shop::app.blog.page_title') }}</title>
     </head>
     <body>
         <h1>Shop - Blog Posts</h1>
