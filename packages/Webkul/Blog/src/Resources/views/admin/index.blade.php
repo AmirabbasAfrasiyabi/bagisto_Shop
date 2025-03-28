@@ -1,13 +1,10 @@
-<x-admin::layouts>
-
-    <!-- Title of the page -->
-    <x-slot:title>
-        Package Blog
-    </x-slot>
-
-    <!-- Page Content -->
-    <div class="page-content">
-        <h1>Package Blog</h1>
-    </div>
-
-</x-admin::layouts>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Admin - Blog Posts</title>
+    </head>
+    <body>
+        <h1>Admin - Blog Posts</h1>
+        <p>Welcome to the admin section for managing blog posts.</p>
+    </body>
+</html>

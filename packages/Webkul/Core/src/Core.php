@@ -98,6 +98,8 @@ class Core
      * @var array
      */
     protected $singletonInstances = [];
+    protected $repo;
+    protected $config;
 
     /**
      * Create a new instance.
@@ -112,9 +114,12 @@ class Core
         protected CountryStateRepository $countryStateRepository,
         protected LocaleRepository $localeRepository,
         protected CustomerGroupRepository $customerGroupRepository,
-        protected TaxCategoryRepository $taxCategoryRepository
+        protected TaxCategoryRepository $taxCategoryRepository , 
+        $config = null
     ) {
         $this->channelRepository = $channelRepository;
+        // $this->repo = $repo;
+        $this->config = $config;
     }
 
     /**
@@ -247,6 +252,12 @@ class Core
     public function setCurrentPriceFormat($format)
     {
     }
+
+
+    public function getRequestedLocaleCode($key = 'locale', $default = null)
+{
+    return request()->get($key, $default);
+}
 
 
 
