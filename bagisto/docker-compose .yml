@@ -1,0 +1,95 @@
+# version: "3.1"
+
+services:
+  bagisto-php-apache:
+    build:
+      args:
+        uid: 1000
+        user: $USER
+        container_project_path: /var/www/html/
+      context: .
+      dockerfile: ./Dockerfile
+    image: bagisto-php-apache
+    ports:
+      - 80:80
+    volumes:
+      - ./workspace/:/var/www/html/
+
+    environment:
+      APP_URL: http://127.0.0.1:8082
+      DB_HOST: mysql
+      DB_DATABASE: first_project
+      DB_USERNAME: root
+      DB_PASSWORD: 
+
+  bagisto-mysql:
+    image: mysql:8.0
+    container_name: bagisto-mysql
+    restart: unless-stopped
+    command: --default-authentication-plugin=mysql_native_password
+    ports:
+      - 3306:3306
+
+    environment:
+      MYSQL_DATABASE: first_project
+      MYSQL_ROOT_PASSWORD: 
+      
+    volumes:
+      - ./.configs/mysql-data:/var/lib/mysql/
+
+  bagisto-redis:
+    image: redis:6.2-alpine
+    ports:
+      - 6379:6379
+    command: redis-server --save 20 1 --loglevel warning
+    volumes:
+      - ./.configs/redis-data:/data
+
+  bagisto-phpmyadmin:
+    image: phpmyadmin:latest
+    environment:
+      PMA_HOST: bagisto-mysql
+      PMA_USER: root
+      PMA_PASSWORD: root
+      UPLOAD_LIMIT: 512M
+    ports:
+      - 8080:80
+
+  bagisto-elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.17.0
+    environment:
+      - xpack.security.enabled=false
+      - discovery.type=single-node
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms256m -Xmx256m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 65536
+        hard: 65536
+    volumes:
+      - ./.configs/elasticsearch-data:/var/lib/elasticsearch/data
+    ports:
+      - 9200:9200
+      - 9300:9300
+
+  bagisto-kibana:
+    image: docker.elastic.co/kibana/kibana:7.17.0
+    environment:
+      - ELASTICSEARCH_HOSTS=http://bagisto-elasticsearch:9200
+    ports:
+      - 5601:5601
+    depends_on:
+      - bagisto-elasticsearch
+
+  bagisto-mailpit:
+    image: axllent/mailpit:latest
+    logging:
+        # Disable saving logs.
+        driver: 'none'
+    ports:
+        # SMTP server.
+        - 1025:1025
+        - 8025:8025
