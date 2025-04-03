@@ -1,5 +1,5 @@
 # main image
-FROM php:8.3-apache
+FROM php:8.2-apache
 
 # installing main dependencies
 RUN apt-get update && apt-get install -y \
@@ -47,11 +47,13 @@ RUN npm install -g npx
 
 # arguments
 ARG container_project_path
-ARG uid
-ARG user
+ARG uid=1000
+ARG user=myuser
 
 # adding user
-RUN useradd -G www-data,root -u $uid -d /home/$user $user
+RUN mkdir -p /home/$user && \
+    useradd -G www-data,root -u $uid -d /home/$user $user
+
 RUN mkdir -p /home/$user/.composer && \
     chown -R $user:$user /home/$user
 
