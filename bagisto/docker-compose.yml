@@ -1,25 +1,27 @@
-# version: "3.1"
-
 services:
   bagisto-php-apache:
     build:
       args:
-        uid: ${uid}
-        user: ${user}
+        uid: ${uid:-1000}
+        user: ${user:-myuser}
+        container_project_path: /var/www/html
       context: .
       dockerfile: ./Dockerfile
     image: bagisto-php-apache
     ports:
-      - 80:80
+      - "80:80"
     volumes:
       - ./workspace/:/var/www/html/
-
     environment:
-      APP_URL: http://127.0.0.1:8082
-      DB_HOST: mysql
+      APP_URL: http://localhost
+      DB_HOST: bagisto-mysql
       DB_DATABASE: first_project
       DB_USERNAME: root
-      DB_PASSWORD: 
+      DB_PASSWORD: root
+    depends_on:
+      - bagisto-mysql
+    networks:
+      - bagisto-network
 
   bagisto-mysql:
     image: mysql:8.0
@@ -27,22 +29,24 @@ services:
     restart: unless-stopped
     command: --default-authentication-plugin=mysql_native_password
     ports:
-      - 3306:3306
-
+      - "3306:3306"
     environment:
       MYSQL_DATABASE: first_project
-      MYSQL_ROOT_PASSWORD: 
-      
+      MYSQL_ROOT_PASSWORD: root 
     volumes:
       - ./.configs/mysql-data:/var/lib/mysql/
+    networks:
+      - bagisto-network
 
   bagisto-redis:
     image: redis:6.2-alpine
     ports:
-      - 6379:6379
+      - "6379:6379"
     command: redis-server --save 20 1 --loglevel warning
     volumes:
       - ./.configs/redis-data:/data
+    networks:
+      - bagisto-network
 
   bagisto-phpmyadmin:
     image: phpmyadmin:latest
@@ -52,10 +56,14 @@ services:
       PMA_PASSWORD: root
       UPLOAD_LIMIT: 512M
     ports:
-      - 8080:80
+      - "8080:80"
+    depends_on:
+      - bagisto-mysql
+    networks:
+      - bagisto-network
 
   bagisto-elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.17.0
+    image: elasticsearch:7.17.0
     environment:
       - xpack.security.enabled=false
       - discovery.type=single-node
@@ -71,24 +79,32 @@ services:
     volumes:
       - ./.configs/elasticsearch-data:/var/lib/elasticsearch/data
     ports:
-      - 9200:9200
-      - 9300:9300
+      - "9200:9200"
+      - "9300:9300"
+    networks:
+      - bagisto-network
 
   bagisto-kibana:
-    image: docker.elastic.co/kibana/kibana:7.17.0
+    image: kibana:7.17.9
     environment:
       - ELASTICSEARCH_HOSTS=http://bagisto-elasticsearch:9200
     ports:
-      - 5601:5601
+      - "5601:5601"
     depends_on:
       - bagisto-elasticsearch
+    networks:
+      - bagisto-network
 
   bagisto-mailpit:
     image: axllent/mailpit:latest
     logging:
-        # Disable saving logs.
-        driver: 'none'
+      driver: 'none'
     ports:
-        # SMTP server.
-        - 1025:1025
-        - 8025:8025
+      - "1025:1025"
+      - "8025:8025"
+    networks:
+      - bagisto-network
+
+networks:
+  bagisto-network:
+    driver: bridge

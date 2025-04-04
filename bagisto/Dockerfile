@@ -1,72 +1,81 @@
-# main image
+# استفاده از نسخه مشخص PHP Apache
 FROM php:8.2-apache
 
-# installing main dependencies
-RUN apt-get update && apt-get install -y \
-    git \
-    ffmpeg 
+RUN if [ -f /etc/apt/sources.list ]; then \
+      sed -i 's|deb.debian.org|debian.asis.ai|g' /etc/apt/sources.list && \
+      sed -i 's|security.debian.org|debian.asis.ai|g' /etc/apt/sources.list; \
+    else \
+      echo "No /etc/apt/sources.list found, skipping mirror change."; \
+    fi
 
-# installing unzip dependencies
-RUN apt-get install -y \
-    libzip-dev \
-    zlib1g-dev \
-    unzip
+RUN for i in $(seq 1 5); do \
+        apt-get update -y && break || sleep 10; \
+    done
 
-# gd extension configure and install
-RUN apt-get install -y \
-    libfreetype6-dev \
-    libicu-dev \
-    libgmp-dev \
-    libjpeg62-turbo-dev \
-    libpng-dev \
-    libwebp-dev \
-    libxpm-dev
-RUN docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp && docker-php-ext-install gd
+RUN for i in $(seq 1 3); do \
+        apt-get install -y \
+        git \
+        ffmpeg \
+        libzip-dev \
+        zlib1g-dev \
+        unzip \
+        libfreetype6-dev \
+        libicu-dev \
+        libgmp-dev \
+        libjpeg62-turbo-dev \
+        libpng-dev \
+        libwebp-dev \
+        libxpm-dev \
+        libmagickwand-dev && break || sleep 15; \
+    done
 
-# imagick extension configure and install
-RUN apt-get install -y libmagickwand-dev \
-    && pecl install imagick \
-    && docker-php-ext-enable imagick
 
-# intl extension configure and install
-RUN docker-php-ext-configure intl && docker-php-ext-install intl
+RUN docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp && \
+    docker-php-ext-install gd
 
-# other extensions install
+RUN pecl install imagick && \
+    docker-php-ext-enable imagick
+
+
+RUN docker-php-ext-configure intl && \
+    docker-php-ext-install intl
+
+
 RUN docker-php-ext-install bcmath calendar exif gmp mysqli pdo pdo_mysql zip
 
-# installing composer
-COPY --from=composer:2.7 /usr/bin/composer /usr/local/bin/composer
 
-# installing node js
-COPY --from=node:23 /usr/local/lib/node_modules /usr/local/lib/node_modules
-COPY --from=node:23 /usr/local/bin/node /usr/local/bin/node
-RUN ln -s /usr/local/lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/npm
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-# installing global node dependencies
-RUN npm install -g npx
 
-# arguments
-ARG container_project_path
+RUN curl -fsSL https://nodejs.org/dist/v18.17.0/node-v18.17.0-linux-x64.tar.gz -o /tmp/node.tar.gz && \
+    mkdir -p /usr/local/lib/nodejs && \
+    tar -xzf /tmp/node.tar.gz -C /usr/local/lib/nodejs && \
+    ln -s /usr/local/lib/nodejs/node-v18.17.0-linux-x64/bin/node /usr/local/bin/node && \
+    ln -s /usr/local/lib/nodejs/node-v18.17.0-linux-x64/bin/npm /usr/local/bin/npm && \
+    ln -s /usr/local/lib/nodejs/node-v18.17.0-linux-x64/bin/npx /usr/local/bin/npx
+
+
+ARG container_project_path=/var/www/html
 ARG uid=1000
 ARG user=myuser
 
-# adding user
 RUN mkdir -p /home/$user && \
     useradd -G www-data,root -u $uid -d /home/$user $user
 
 RUN mkdir -p /home/$user/.composer && \
     chown -R $user:$user /home/$user
 
-# setting apache
+
 COPY ./.configs/apache.conf /etc/apache2/sites-available/000-default.conf
 RUN a2enmod rewrite
 
-# setting up project from `src` folder
-RUN chmod -R 775 $container_project_path
-RUN chown -R $user:www-data $container_project_path
 
-# changing user
+RUN mkdir -p $container_project_path && \
+    chmod -R 775 $container_project_path && \
+    chown -R $user:www-data $container_project_path
+
+
 USER $user
 
-# setting work directory
+
 WORKDIR $container_project_path
