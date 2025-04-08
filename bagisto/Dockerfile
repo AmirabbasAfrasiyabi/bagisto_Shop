@@ -1,4 +1,4 @@
-# استفاده از نسخه مشخص PHP Apache
+
 FROM php:8.2-apache
 
 RUN if [ -f /etc/apt/sources.list ]; then \
