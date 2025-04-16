@@ -4,7 +4,7 @@ namespace Webkul\FPC\Listeners;
 
 use Spatie\ResponseCache\Facades\ResponseCache;
 use Webkul\Product\Repositories\ProductReviewRepository;
-
+use Webkul\Product\Contracts\Review as ReviewContract;
 class Review
 {
     /**
