@@ -1,0 +1,72 @@
+FROM php:8.2-apache
+
+
+RUN apt-get update -y && \
+    apt-get install -y \
+    git \
+    ffmpeg \
+    libzip-dev \
+    zlib1g-dev \
+    unzip \
+    libfreetype6-dev \
+    libicu-dev \
+    libgmp-dev \
+    libjpeg62-turbo-dev \
+    libpng-dev \
+    libwebp-dev \
+    libxpm-dev \
+    libmagickwand-dev && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+
+RUN docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp && \
+    docker-php-ext-install gd
+
+RUN pecl install imagick && \
+    docker-php-ext-enable imagick
+
+RUN docker-php-ext-configure intl && \
+    docker-php-ext-install intl
+
+RUN docker-php-ext-install bcmath calendar exif gmp mysqli pdo pdo_mysql zip
+
+
+RUN { \
+    echo 'memory_limit = 512M'; \
+    echo 'upload_max_filesize = 64M'; \
+    echo 'post_max_size = 64M'; \
+    } > /usr/local/etc/php/conf.d/bagisto.ini
+
+# نصب Composer
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+# نصب Node.js
+RUN curl -fsSL https://nodejs.org/dist/v18.17.0/node-v18.17.0-linux-x64.tar.gz -o /tmp/node.tar.gz && \
+    mkdir -p /usr/local/lib/nodejs && \
+    tar -xzf /tmp/node.tar.gz -C /usr/local/lib/nodejs && \
+    ln -s /usr/local/lib/nodejs/node-v18.17.0-linux-x64/bin/node /usr/local/bin/node && \
+    ln -s /usr/local/lib/nodejs/node-v18.17.0-linux-x64/bin/npm /usr/local/bin/npm && \
+    ln -s /usr/local/lib/nodejs/node-v18.17.0-linux-x64/bin/npx /usr/local/bin/npx && \
+    rm /tmp/node.tar.gz
+
+
+ARG container_project_path=/var/www/html
+ARG uid=1000
+ARG user=myuser
+
+RUN mkdir -p /home/$user && \
+    useradd -G www-data,root -u $uid -d /home/$user $user
+
+RUN mkdir -p /home/$user/.composer && \
+    chown -R $user:$user /home/$user
+
+COPY ./.configs/apache.conf /etc/apache2/sites-available/000-default.conf
+RUN a2enmod rewrite
+
+RUN mkdir -p $container_project_path && \
+    chmod -R 775 $container_project_path && \
+    chown -R www-data:www-data $container_project_path
+
+USER $user
+WORKDIR $container_project_path

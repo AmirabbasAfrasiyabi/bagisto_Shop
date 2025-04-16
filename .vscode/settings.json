@@ -1,10 +1,10 @@
 {
     "cSpell.words": [
-        "asis",
         "axllent",
         "bcmath",
         "enmod",
         "exif",
+        "filesize",
         "freetype",
         "imagick",
         "libgmp",
@@ -20,8 +20,10 @@
         "mysqli",
         "myuser",
         "nofile",
+        "opcache",
         "pecl",
         "phpmyadmin",
+        "realpath",
         "ulimits",
         "webp",
         "xpack"
